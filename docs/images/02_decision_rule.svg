@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="630" viewBox="0 0 780 630" font-family="Segoe UI, Arial, Helvetica, sans-serif">
+<title>The decision rule</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L9 5L1 9z" fill="#6b6f7b"/></marker></defs>
+<rect width="780" height="630" fill="#ffffff"/>
+<text x="30" y="36" font-size="19" fill="#10151f" font-weight="bold" text-anchor="start">The decision rule (rule.py): the AI never picks the label</text>
+<text x="30" y="58" font-size="12.5" fill="#52514e" font-weight="normal" text-anchor="start">The AI only answers two yes/no questions. This fixed rule, based on NATA guidelines, turns the answers into a label.</text>
+<rect x="190" y="80" width="220" height="54" rx="10" fill="#f4f4f2" stroke="#9a9a94" stroke-width="1.5"/>
+<text x="300.0" y="102.0" font-size="14" fill="#3a3a37" font-weight="bold" text-anchor="middle">AI reads the description</text>
+<text x="300.0" y="121.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">and answers 2 questions</text>
+<path d="M300 134 L300 158" fill="none" stroke="#6b6f7b" stroke-width="1.8" marker-end="url(#a)"/>
+<polygon points="300,160.0 430.0,210 300,260.0 170.0,210" fill="#ffffff" stroke="#6b6f7b" stroke-width="1.5"/>
+<text x="300" y="207" font-size="13.5" fill="#10151f" font-weight="bold" text-anchor="middle">CNS sign?</text>
+<text x="300" y="225" font-size="11.5" fill="#52514e" font-weight="normal" text-anchor="middle">confusion, collapse, stumbling...</text>
+<polygon points="300,300.0 430.0,350 300,400.0 170.0,350" fill="#ffffff" stroke="#6b6f7b" stroke-width="1.5"/>
+<text x="300" y="347" font-size="13.5" fill="#10151f" font-weight="bold" text-anchor="middle">Temperature &gt; 40.5 °C?</text>
+<text x="300" y="365" font-size="11.5" fill="#52514e" font-weight="normal" text-anchor="middle">rounded to 0.1 °C first</text>
+<polygon points="300,440.0 430.0,490 300,540.0 170.0,490" fill="#ffffff" stroke="#6b6f7b" stroke-width="1.5"/>
+<text x="300" y="487" font-size="13.5" fill="#10151f" font-weight="bold" text-anchor="middle">Heat symptom?</text>
+<text x="300" y="505" font-size="11.5" fill="#52514e" font-weight="normal" text-anchor="middle">sweating, nausea, dizziness...</text>
+<path d="M300 260 L300 298" fill="none" stroke="#6b6f7b" stroke-width="1.8" marker-end="url(#a)"/>
+<text x="310" y="284" font-size="12" fill="#52514e" font-weight="normal" text-anchor="start">no</text>
+<path d="M300 400 L300 438" fill="none" stroke="#6b6f7b" stroke-width="1.8" marker-end="url(#a)"/>
+<text x="310" y="424" font-size="12" fill="#52514e" font-weight="normal" text-anchor="start">no</text>
+<rect x="530" y="182" width="220" height="56" rx="10" fill="#fdeaea" stroke="#d03b3b" stroke-width="1.5"/>
+<text x="640.0" y="205.0" font-size="14" fill="#7a1515" font-weight="bold" text-anchor="middle">HEAT STROKE</text>
+<text x="640.0" y="224.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">call 911, cool first</text>
+<rect x="530" y="322" width="220" height="56" rx="10" fill="#fff0e6" stroke="#eb6834" stroke-width="1.5"/>
+<text x="640.0" y="345.0" font-size="14" fill="#7a2e10" font-weight="bold" text-anchor="middle">UNCERTAIN</text>
+<text x="640.0" y="364.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">flag for a person to review</text>
+<rect x="530" y="462" width="220" height="56" rx="10" fill="#fff5dc" stroke="#c98a00" stroke-width="1.5"/>
+<text x="640.0" y="485.0" font-size="14" fill="#5c4000" font-weight="bold" text-anchor="middle">HEAT EXHAUSTION</text>
+<text x="640.0" y="504.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">cool down, keep watching</text>
+<rect x="190" y="570" width="220" height="44" rx="10" fill="#e9f6ea" stroke="#2e8b57" stroke-width="1.5"/>
+<text x="300.0" y="596.0" font-size="14" fill="#1d5a37" font-weight="bold" text-anchor="middle">NOT HEAT ILLNESS</text>
+<path d="M430 210 L527 210" fill="none" stroke="#6b6f7b" stroke-width="1.8" marker-end="url(#a)"/>
+<text x="470" y="202" font-size="12" fill="#52514e" font-weight="normal" text-anchor="start">yes</text>
+<path d="M430 350 L527 350" fill="none" stroke="#6b6f7b" stroke-width="1.8" marker-end="url(#a)"/>
+<text x="470" y="342" font-size="12" fill="#52514e" font-weight="normal" text-anchor="start">yes</text>
+<path d="M430 490 L527 490" fill="none" stroke="#6b6f7b" stroke-width="1.8" marker-end="url(#a)"/>
+<text x="470" y="482" font-size="12" fill="#52514e" font-weight="normal" text-anchor="start">yes</text>
+<path d="M300 540 L300 567" fill="none" stroke="#6b6f7b" stroke-width="1.8" marker-end="url(#a)"/>
+<text x="310" y="558" font-size="12" fill="#52514e" font-weight="normal" text-anchor="start">no</text>
+<text x="30" y="150" font-size="12" fill="#52514e" font-weight="bold" text-anchor="start">Order matters:</text>
+<text x="30" y="168" font-size="12" fill="#52514e" font-weight="normal" text-anchor="start">a CNS sign wins even</text>
+<text x="30" y="186" font-size="12" fill="#52514e" font-weight="normal" text-anchor="start">with a low temperature,</text>
+<text x="30" y="204" font-size="12" fill="#52514e" font-weight="normal" text-anchor="start">because field readings</text>
+<text x="30" y="222" font-size="12" fill="#52514e" font-weight="normal" text-anchor="start">often read too low.</text>
+</svg>

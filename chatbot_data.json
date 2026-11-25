@@ -1,0 +1,149 @@
+{
+  "greeting": {
+    "button": "Hi",
+    "answer": "Hi! I can answer questions about this result, like why the tool chose it, what CNS signs are, or what to do next. What would you like to know?",
+    "train": [
+      "hi", "hello", "hey", "hey there", "hello chatbot",
+      "good morning", "hi can you help me", "hello is anyone there"
+    ],
+    "test": ["hiya", "good afternoon", "hey bot"]
+  },
+  "thanks": {
+    "button": "Thanks",
+    "answer": "You're welcome. Remember, this is a student science fair tool, not a doctor. In a real emergency, always call 911.",
+    "train": [
+      "thanks", "thank you", "thanks a lot", "thank you so much",
+      "ok thanks", "that helps thanks", "got it thank you", "thanks for the help"
+    ],
+    "test": ["thx", "thank you that was helpful", "ok cool thanks"]
+  },
+  "why_this_label": {
+    "button": "Why this result?",
+    "answers_by_label": {
+      "Heat Stroke": "The tool said Heat Stroke because the AI found a sign of central nervous system (CNS) dysfunction: \"{cns_reason}\". Under the NATA guidelines this tool follows, a CNS sign during heat or exercise is treated as heat stroke no matter what the temperature says.",
+      "Uncertain — flag for review": "The temperature ({temperature_f} °F, {temperature_c} °C) is above 104.9 °F (40.5 °C), but the AI found no CNS sign: \"{cns_reason}\". That mix does not clearly fit heat stroke or heat exhaustion, so the tool flags it for a trained person to review instead of guessing.",
+      "Heat Exhaustion": "The AI found a heat symptom (\"{heat_reason}\") but no CNS sign (\"{cns_reason}\"), and the temperature ({temperature_f} °F, {temperature_c} °C) is not above 104.9 °F (40.5 °C). That matches heat exhaustion.",
+      "Not Heat Illness — no thermal stress indicated": "The AI found no CNS sign (\"{cns_reason}\") and no heat symptom (\"{heat_reason}\"), and the temperature is not above 104.9 °F (40.5 °C), so the tool did not find heat illness."
+    },
+    "answer": "The tool decides from two yes/no answers (a CNS sign? a heat symptom?) plus the temperature.",
+    "train": [
+      "why did it say this", "why this result", "why did it pick that",
+      "why is it heat stroke", "how did it decide", "why was it classified like that",
+      "what made it choose this answer", "explain the result"
+    ],
+    "test": ["why heat exhaustion", "how come it said that", "what was the reason for this classification"]
+  },
+  "what_is_cns": {
+    "button": "What is CNS?",
+    "answer": "CNS means central nervous system: the brain and spinal cord. CNS signs include confusion, not knowing where you are, stumbling or losing balance, strange or combative behavior, collapsing, seizures, and not waking up. Dizziness by itself is not counted as a CNS sign.",
+    "train": [
+      "what is cns", "what does cns mean", "what is central nervous system",
+      "what are cns signs", "what counts as cns dysfunction", "what does cns dysfunction mean",
+      "what are signs of brain problems", "is confusion a cns sign"
+    ],
+    "test": ["define cns", "what is a cns symptom", "does stumbling count as cns"]
+  },
+  "temp_vs_cns": {
+    "button": "Why not just use temperature?",
+    "answer": "Temperatures taken in the field (mouth, ear, forehead) often read lower than the body's real core temperature. So a person can have heat stroke even when the number does not look very high. That is why this tool treats CNS signs like confusion as more important than the temperature.",
+    "train": [
+      "why heat stroke if the temperature is low", "the temperature is normal so why",
+      "why does confusion matter more than temperature", "why not just use the temperature",
+      "can you have heat stroke with a low temperature", "the number is not that high",
+      "why is temperature not enough", "does temperature matter"
+    ],
+    "test": ["his temp is only 39 why heat stroke", "isn't temperature the main thing", "why ignore the temperature"]
+  },
+  "temperature_method": {
+    "button": "Does the thermometer type matter?",
+    "answer": "Yes. NATA guidance says only a rectal temperature is accurate after hard exercise in the heat. Mouth, ear, forehead and armpit readings can read too low. This reading was taken by: {temp_source}.",
+    "train": [
+      "does it matter where the temperature was taken", "why does the thermometer type matter",
+      "is an ear thermometer accurate", "is oral temperature accurate", "what is a rectal temperature",
+      "which thermometer is best", "is forehead temperature ok", "why rectal temperature"
+    ],
+    "test": ["are mouth thermometers good enough", "how accurate is an ear reading", "best way to measure body temperature"]
+  },
+  "giving_water": {
+    "button": "Can I give them water?",
+    "answer": "Only if the person is fully alert, is not throwing up, and can swallow normally. If they are confused, drowsy or vomiting, do not give anything by mouth, because they could choke. For heat stroke, cooling comes first.",
+    "train": [
+      "can i give them water", "should he drink water", "can she drink something",
+      "is it ok to give fluids", "can i give a sports drink", "should they drink",
+      "do i give them water", "can he have something to drink"
+    ],
+    "test": ["is water ok for him", "should i give gatorade", "can they drink fluids"]
+  },
+  "cooling": {
+    "button": "How do I cool them down?",
+    "answer": "The fastest way is cold water immersion: put the person's body in a tub of ice water. If you can't, move them to shade, remove extra clothing and gear, and keep ice packs or cold wet towels on the neck, armpits and groin, swapping them often while fanning. For heat stroke, cool first and transport second.",
+    "train": [
+      "how do i cool them down", "what is the best way to cool someone",
+      "should i use ice", "how do i lower their temperature", "what is cold water immersion",
+      "where do i put ice packs", "how fast should i cool them", "can i use a fan"
+    ],
+    "test": ["best cooling method", "how to bring body temperature down", "do i put them in ice water"]
+  },
+  "while_waiting": {
+    "button": "What do I do while waiting for 911?",
+    "answer": "Keep cooling the whole time. Watch their breathing and how responsive they are. If they vomit, roll them onto their side. If they stop breathing normally, start CPR and use an AED if there is one. Send someone to meet the ambulance and guide it to you.",
+    "train": [
+      "what do i do while waiting for the ambulance", "what should i do until help arrives",
+      "what do i do after calling 911", "the ambulance is coming what now",
+      "what should i watch for", "how do i help while we wait",
+      "what if they stop breathing", "what if they throw up"
+    ],
+    "test": ["what now while ems is on the way", "while we wait for paramedics what do i do", "what happens if they vomit"]
+  },
+  "exhaustion_vs_stroke": {
+    "button": "Heat exhaustion vs heat stroke?",
+    "answer": "Heat exhaustion means heat symptoms like heavy sweating, weakness, nausea or dizziness, but the person thinks and acts normally. Heat stroke is an emergency: the person shows CNS signs like confusion, strange behavior or collapse, and their core temperature is usually above 104.9 °F (40.5 °C). Heat exhaustion can turn into heat stroke, so keep watching.",
+    "train": [
+      "what is the difference between heat exhaustion and heat stroke",
+      "heat exhaustion vs heat stroke", "how is heat stroke different",
+      "what is heat exhaustion", "what is heat stroke", "is heat exhaustion serious",
+      "can heat exhaustion become heat stroke", "which is worse heat stroke or exhaustion"
+    ],
+    "test": ["how do i tell exhaustion from stroke", "define heat stroke", "is heat stroke worse than exhaustion"]
+  },
+  "flag_for_review": {
+    "button": "What does 'flag for review' mean?",
+    "answer": "\"Uncertain — flag for review\" means the case does not clearly match a category, usually a high temperature but no CNS signs. The tool does not guess. A trained person such as an athletic trainer, EMS or a doctor should check the person, and guidelines say to treat it as the more serious condition until then.",
+    "train": [
+      "what does flag for review mean", "what does uncertain mean",
+      "why is it uncertain", "what does review mean", "who should review it",
+      "what do i do if it is uncertain", "why did it not decide", "what is a flagged case"
+    ],
+    "test": ["what is uncertain flag", "why couldn't it decide", "who reviews the case"]
+  },
+  "accuracy": {
+    "button": "How accurate is this?",
+    "answer": "The student tested this tool on written practice cases and compared it with simpler methods; the results are on the project poster. Written cases are not real patients, so real-life accuracy could be different. Never rely on this tool instead of a trained professional.",
+    "train": [
+      "how accurate is this", "is this tool accurate", "can i trust this result",
+      "how often is it right", "how often is it wrong", "is it reliable",
+      "what is the accuracy", "has this been tested"
+    ],
+    "test": ["is this reliable enough", "how good is this program", "does it make mistakes"]
+  },
+  "how_it_works": {
+    "button": "How does this program work?",
+    "answer": "First, an AI language model reads the description and answers two yes/no questions: is there a CNS sign, and is there a heat symptom? Then a fixed rule based on NATA guidelines turns those answers and the temperature into the result. I'm a separate chatbot: a Naive Bayes model the student trained to recognize questions.",
+    "train": [
+      "how does this program work", "how does the ai work", "how does it decide",
+      "what does the ai do", "how was this made", "how do you work",
+      "what model does it use", "are you chatgpt"
+    ],
+    "test": ["how does this tool work", "what ai is this", "how were you built"]
+  },
+  "not_a_doctor": {
+    "button": "Can this replace a doctor?",
+    "answer": "No. This is a student science fair project, not a medical device. It can help you think through a situation, but a trained professional should always evaluate the person. If you think it could be heat stroke, call 911.",
+    "train": [
+      "can this replace a doctor", "is this a medical diagnosis", "do i still need a doctor",
+      "should i see a doctor", "is this medical advice", "can i trust this instead of a doctor",
+      "do i need to go to the hospital", "is this a real diagnosis"
+    ],
+    "test": ["should i go to the er", "is this official medical advice", "does he need a doctor"]
+  }
+}

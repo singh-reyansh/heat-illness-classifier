@@ -1,0 +1,51 @@
+id,predicted_label,true_label,cns_flag,heat_symptoms_flag,temperature_c
+V001,Heat Exhaustion,Heat Exhaustion,0,1,38.6
+V002,Heat Stroke,Heat Stroke,1,0,41.2
+V003,Heat Stroke,Heat Stroke,1,0,40.0
+V004,Heat Exhaustion,Heat Exhaustion,0,1,40.3
+V005,Uncertain — flag for review,Uncertain — flag for review,0,1,41.0
+V006,Not Heat Illness — no thermal stress indicated,Heat Stroke,0,0,39.5
+V007,Heat Stroke,Heat Stroke,1,0,42.8
+V008,Heat Stroke,Not Heat Illness — no thermal stress indicated,1,0,37.4
+V009,Heat Exhaustion,Heat Exhaustion,0,1,38.9
+V010,Heat Stroke,Heat Stroke,1,0,42.6
+V011,Heat Stroke,Heat Stroke,1,1,38.9
+V012,Uncertain — flag for review,Uncertain — flag for review,0,1,41.3
+V013,Not Heat Illness — no thermal stress indicated,Not Heat Illness — no thermal stress indicated,0,0,37.1
+V014,Not Heat Illness — no thermal stress indicated,Not Heat Illness — no thermal stress indicated,0,0,37.3
+V015,Heat Exhaustion,Heat Stroke,0,1,39.8
+V016,Heat Exhaustion,Heat Exhaustion,0,1,39.2
+V017,Not Heat Illness — no thermal stress indicated,Not Heat Illness — no thermal stress indicated,0,0,38.5
+V018,Heat Exhaustion,Heat Exhaustion,0,1,40.4
+V019,Not Heat Illness — no thermal stress indicated,Heat Stroke,0,0,39.6
+V020,Heat Stroke,Uncertain — flag for review,1,1,41.6
+V021,Heat Exhaustion,Heat Exhaustion,0,1,39.1
+V022,Heat Stroke,Heat Stroke,1,1,40.9
+V023,Heat Exhaustion,Heat Exhaustion,0,1,38.7
+V024,Not Heat Illness — no thermal stress indicated,Heat Stroke,0,0,40.2
+V025,Heat Exhaustion,Heat Exhaustion,0,1,38.4
+V026,Uncertain — flag for review,Uncertain — flag for review,0,1,40.7
+V027,Uncertain — flag for review,Heat Stroke,0,0,41.4
+V028,Not Heat Illness — no thermal stress indicated,Not Heat Illness — no thermal stress indicated,0,0,37.2
+V029,Heat Stroke,Heat Stroke,1,1,40.1
+V030,Heat Exhaustion,Heat Exhaustion,0,1,38.8
+V031,Heat Stroke,Heat Stroke,1,0,41.9
+V032,Heat Exhaustion,Heat Exhaustion,0,1,39.4
+V033,Heat Exhaustion,Heat Exhaustion,0,1,38.1
+V034,Heat Stroke,Heat Stroke,1,0,41.1
+V035,Not Heat Illness — no thermal stress indicated,Not Heat Illness — no thermal stress indicated,0,0,37.0
+V036,Heat Exhaustion,Heat Exhaustion,0,1,40.5
+V037,Heat Exhaustion,Heat Exhaustion,0,1,39.0
+V038,Not Heat Illness — no thermal stress indicated,Not Heat Illness — no thermal stress indicated,0,0,37.8
+V039,Uncertain — flag for review,Uncertain — flag for review,0,1,40.6
+V040,Not Heat Illness — no thermal stress indicated,Heat Stroke,0,0,39.7
+V041,Heat Exhaustion,Heat Exhaustion,0,1,39.3
+V042,Uncertain — flag for review,Uncertain — flag for review,0,1,41.0
+V043,Not Heat Illness — no thermal stress indicated,Not Heat Illness — no thermal stress indicated,0,0,37.9
+V044,Heat Exhaustion,Heat Exhaustion,0,1,38.6
+V045,Heat Stroke,Heat Stroke,1,0,40.8
+V046,Uncertain — flag for review,Uncertain — flag for review,0,1,41.2
+V047,Heat Exhaustion,Not Heat Illness — no thermal stress indicated,0,1,37.6
+V048,Not Heat Illness — no thermal stress indicated,Heat Stroke,0,0,40.4
+V049,Heat Exhaustion,Heat Exhaustion,0,1,39.2
+V050,Heat Exhaustion,Not Heat Illness — no thermal stress indicated,0,1,37.4

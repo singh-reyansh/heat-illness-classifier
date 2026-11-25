@@ -1,0 +1,19 @@
+# --- Secrets: never commit an API key -------------------------------------
+# This older page once had a real Groq API key typed into it.
+legacy/classifier_1.html
+.env
+*.key
+
+# --- Python -------------------------------------------------------------
+__pycache__/
+*.pyc
+
+# --- Temporary files ----------------------------------------------------
+*.tmp
+~$*
+.DS_Store
+Thumbs.db
+
+# --- Local tool settings ------------------------------------------------
+.claude/
+.vscode/

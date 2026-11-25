@@ -1,0 +1,202 @@
+[
+  {
+    "id": "V001",
+    "symptom_text": "A 16-year-old runner comes off the track heavily sweating, pale, and complaining of nausea and weakness. She is answering questions normally and knows where she is.",
+    "temperature_c": 38.6,
+    "temperature_source": "oral",
+    "true_cns": 0,
+    "true_heat_symptoms": 1,
+    "true_label": "Heat Exhaustion",
+    "notes": "Clean, uncomplicated case: clear heat symptoms (sweating, nausea, weakness), no CNS involvement, temp well under 40.5C. Good sanity-check case for the pipeline."
+  },
+  {
+    "id": "V002",
+    "symptom_text": "A construction worker is found slumped against a wall, unresponsive to his name, and does not react when someone shakes his shoulder.",
+    "temperature_c": 41.2,
+    "temperature_source": "tympanic",
+    "true_cns": 1,
+    "true_heat_symptoms": 0,
+    "true_label": "Heat Stroke",
+    "notes": "Clean heat stroke case: coma-level unresponsiveness plus a high temperature. true_heat_symptoms is 0 under a strict reading, since none of the listed symptoms (sweating, weakness, nausea, dizziness, cramping, fatigue) are explicitly stated — doesn't matter for the final label since CNS=1 wins outright, but matters if you're scoring the heat-symptoms detector on its own."
+  },
+  {
+    "id": "V003",
+    "symptom_text": "A marching band member is confused about what day it is and can't follow simple instructions, though she is still walking and talking.",
+    "temperature_c": 40.0,
+    "temperature_source": "forehead",
+    "true_cns": 1,
+    "true_heat_symptoms": 0,
+    "true_label": "Heat Stroke",
+    "notes": "Tests the override rule directly: temperature (40.0C) is BELOW the 40.5C threshold, but confirmed CNS dysfunction should still classify this as Heat Stroke per NATA/ACSM. true_heat_symptoms is 0 (none of the listed symptoms are stated) but is irrelevant here since CNS=1 already decides the label."
+  },
+  {
+    "id": "V004",
+    "symptom_text": "A hiker reports feeling dizzy and having a headache but answers every question correctly and recognizes his hiking partner.",
+    "temperature_c": 40.3,
+    "temperature_source": "oral",
+    "true_cns": 0,
+    "true_heat_symptoms": 1,
+    "true_label": "Heat Exhaustion",
+    "notes": "Borderline temperature (just under 40.5C) with no CNS dysfunction, and dizziness is an explicit heat symptom. Pairs with V003 to test both sides of the temperature threshold."
+  },
+  {
+    "id": "V005",
+    "symptom_text": "A football player is sweating heavily and looks exhausted after practice but is alert, oriented, and joking with teammates.",
+    "temperature_c": 41.0,
+    "temperature_source": "tympanic",
+    "true_cns": 0,
+    "true_heat_symptoms": 1,
+    "true_label": "Uncertain — flag for review",
+    "notes": "Deliberate edge case: temperature is above 40.5C but no CNS dysfunction is present, even though heat symptoms (sweating, exhaustion) are clearly there. The rule doesn't formally resolve an elevated temperature without CNS involvement — use it to discuss that limitation in your paper rather than forcing a label."
+  },
+  {
+    "id": "V006",
+    "symptom_text": "A coworker says the patient 'seemed a little off' during the shift, gave a couple of one-word answers that didn't quite make sense, but otherwise seemed to be functioning normally.",
+    "temperature_c": 39.5,
+    "temperature_source": "oral",
+    "true_cns": 1,
+    "true_heat_symptoms": 0,
+    "true_label": "Heat Stroke",
+    "notes": "Judgment call: 'answers that didn't quite make sense' reads as mild confusion, one of NATA's explicit CNS dysfunction signs, even though it's secondhand and mild. The rule has no severity threshold for CNS dysfunction, so a binary 1 applies. If you'd rather weight 'otherwise functioning normally' more heavily, true_cns=0 and true_label='Heat Exhaustion' (temp is under 40.5C either way) is a defensible alternative — just be ready to explain the call either way."
+  },
+  {
+    "id": "V007",
+    "symptom_text": "A 23-year-old male was found unconscious in a construction building; minutes earlier he had been walking and behaving erratically and drinking excessive amounts of fluids.",
+    "temperature_c": 42.8,
+    "temperature_source": "tympanic",
+    "true_cns": 1,
+    "true_heat_symptoms": 0,
+    "true_label": "Heat Stroke",
+    "notes": "Adapted from the case report you cited (Ramirez et al., 2018), with the original rectal reading (43.3C) swapped for a non-rectal reading to match your project's accessible-input framing. Temperature source and exact value are illustrative, not the original clinical reading."
+  },
+  {
+    "id": "V008",
+    "symptom_text": "A teammate says the athlete has been acting unusually irritable and argumentative for the last ten minutes, snapping at people over nothing.",
+    "temperature_c": 37.4,
+    "temperature_source": "oral",
+    "true_cns": 0,
+    "true_heat_symptoms": 0,
+    "true_label": "Not Heat Illness — no thermal stress indicated",
+    "notes": "Irritability alone doesn't match NATA's CNS dysfunction criteria (confusion, loss of balance, irrational behavior, coma), no heat symptoms are described, and temperature is normal — no evidence of heat stress at all. Exposed a gap in the original two-label rule and is why the 'Not Heat Illness' branch and the heat_symptoms flag were added."
+  },
+  {
+    "id": "V009",
+    "symptom_text": "A softball player during a tournament complains of nausea, heavy sweating, and muscle cramps in her legs. She is talking normally and recognizes her coach.",
+    "temperature_c": 38.9,
+    "temperature_source": "oral",
+    "true_cns": 0,
+    "true_heat_symptoms": 1,
+    "true_label": "Heat Exhaustion",
+    "notes": "Second clean Heat Exhaustion case, with a different combination of listed heat symptoms (nausea, sweating, cramping) than V001, and no CNS involvement."
+  },
+  {
+    "id": "V010",
+    "symptom_text": "A landscaper collapses on the job site and cannot be woken by shouting or shaking; coworkers say he had been working in direct sun for hours without breaks.",
+    "temperature_c": 42.6,
+    "temperature_source": "tympanic",
+    "true_cns": 1,
+    "true_heat_symptoms": 0,
+    "true_label": "Heat Stroke",
+    "notes": "Second clean Heat Stroke case (coma-level unresponsiveness, very high temperature), set in an occupational-heat-exposure context rather than sports, to check the pipeline generalizes beyond athletic scenarios."
+  },
+  {
+    "id": "V011",
+    "symptom_text": "A hiker on a hot trail keeps stumbling and losing her balance on flat ground, even though she isn't complaining of any pain or dizziness.",
+    "temperature_c": 38.9,
+    "temperature_source": "forehead",
+    "true_cns": 1,
+    "true_heat_symptoms": 0,
+    "true_label": "Heat Stroke",
+    "notes": "Tests the override rule with a different CNS sign than V003/V006 — loss of balance instead of confusion — at a temperature well under 40.5C and with no listed heat symptoms mentioned at all. CNS dysfunction alone should still drive the label to Heat Stroke."
+  },
+  {
+    "id": "V012",
+    "symptom_text": "A tennis player is drenched in sweat and reports painful cramping in both calves, but is answering questions clearly and knows the score of the match.",
+    "temperature_c": 41.3,
+    "temperature_source": "tympanic",
+    "true_cns": 0,
+    "true_heat_symptoms": 1,
+    "true_label": "Uncertain — flag for review",
+    "notes": "Second deliberate Uncertain case, pairing with V005: temperature is above 40.5C with clear heat symptoms (sweating, cramping) but no CNS dysfunction. Confirms the Uncertain gap isn't a one-off fluke in the rule."
+  },
+  {
+    "id": "V013",
+    "symptom_text": "A student says he has a mild headache and just wants to sit down for a minute, but mentions he only slept four hours last night and skipped breakfast.",
+    "temperature_c": 37.1,
+    "temperature_source": "oral",
+    "true_cns": 0,
+    "true_heat_symptoms": 0,
+    "true_label": "Not Heat Illness — no thermal stress indicated",
+    "notes": "Second Not Heat Illness case: a headache isn't one of the six listed heat symptoms, the description itself points to poor sleep and skipped breakfast as the likely cause, and temperature is normal. Tests that the heat-symptom detector doesn't over-flag any complaint as heat-related."
+  },
+  {
+    "id": "V014",
+    "symptom_text": "A camper is coughing and has a runny nose during a midday hike, but otherwise feels fine and is walking at a normal pace.",
+    "temperature_c": 37.3,
+    "temperature_source": "oral",
+    "true_cns": 0,
+    "true_heat_symptoms": 0,
+    "true_label": "Not Heat Illness — no thermal stress indicated",
+    "notes": "Cold-like symptoms (coughing, runny nose) that are not on the listed heat-symptom list (sweating, weakness, nausea, dizziness, cramping, fatigue) and not CNS dysfunction. Checks that the pipeline doesn't treat 'any complaint during hot weather' as heat illness."
+  },
+  {
+    "id": "V015",
+    "symptom_text": "A soccer player reports feeling weak and 'not quite right' late in a match, and when asked what city they're in, gives the name of last week's away game instead.",
+    "temperature_c": 39.8,
+    "temperature_source": "oral",
+    "true_cns": 1,
+    "true_heat_symptoms": 1,
+    "true_label": "Heat Stroke",
+    "notes": "First vignette where both flags are expected to fire at once — weakness is a listed heat symptom, and the wrong-city answer is confusion, a listed CNS sign — at a temperature under the 40.5C threshold. Confirms CNS=1 still correctly overrides Heat Exhaustion even when heat symptoms are also clearly present."
+  },
+  {
+    "id": "V016",
+    "symptom_text": "A warehouse worker is sweating heavily, feels dizzy, and has to sit down, but is fully alert and correctly explains what shift he's on and who his supervisor is.",
+    "temperature_c": 39.2,
+    "temperature_source": "forehead",
+    "true_cns": 0,
+    "true_heat_symptoms": 1,
+    "true_label": "Heat Exhaustion",
+    "notes": "Third clean Heat Exhaustion example (dizziness plus sweating) with an explicit orientation check to rule out CNS dysfunction, set in an indoor/industrial heat setting."
+  },
+  {
+    "id": "V017",
+    "symptom_text": "A teammate mentions the runner 'walked off kind of funny' after finishing a 5K on a hot morning, but by the time medical staff reach her she is sitting up, drinking water, and chatting normally.",
+    "temperature_c": 38.5,
+    "temperature_source": "oral",
+    "true_cns": 0,
+    "true_heat_symptoms": 0,
+    "true_label": "Not Heat Illness — no thermal stress indicated",
+    "notes": "Tests a vague secondhand report that resolves by the time it's evaluated. 'Walked off kind of funny' is too vague to count as confirmed CNS dysfunction under NATA's specific criteria, no listed heat symptom is stated, and temperature is normal — this should land in Not Heat Illness rather than being over-flagged from vague phrasing alone."
+  },
+  {
+    "id": "V018",
+    "symptom_text": "A cyclist finishing a long ride in the heat is nauseated and fatigued, and mentions his vision 'went a little blurry' for a few seconds but has been fine since.",
+    "temperature_c": 40.4,
+    "temperature_source": "tympanic",
+    "true_cns": 0,
+    "true_heat_symptoms": 1,
+    "true_label": "Heat Exhaustion",
+    "notes": "Borderline temperature just under the 40.5C threshold (pairing with V004), with nausea and fatigue as clear heat symptoms. Brief blurry vision is not one of NATA's CNS dysfunction signs (confusion, loss of balance, irrational behavior, coma), so this should stay Heat Exhaustion rather than Heat Stroke."
+  },
+  {
+    "id": "V019",
+    "symptom_text": "A referee walks off the field holding his head, says the sun is 'too loud today,' and then immediately apologizes and says he's not sure why he said that.",
+    "temperature_c": 39.6,
+    "temperature_source": "oral",
+    "true_cns": 1,
+    "true_heat_symptoms": 0,
+    "true_label": "Heat Stroke",
+    "notes": "Judgment call: 'the sun is too loud today' is a genuinely confused, nonsensical statement that doesn't track with reality, which fits NATA's definition of confusion even though it was brief. The fact that he caught himself and apologized afterward shows some awareness, but the rule has no severity threshold for CNS dysfunction, so the initial confused statement itself is treated as evidence of true_cns=1, which makes true_label='Heat Stroke' regardless of temperature."
+  },
+  {
+    "id": "V020",
+    "symptom_text": "A gym teacher overhears two students say the kid doing suicides in the heat 'seems kinda out of it,' but when she checks on him directly, he answers all her questions immediately and correctly, just seems tired.",
+    "temperature_c": 41.6,
+    "temperature_source": "tympanic",
+    "true_cns": 0,
+    "true_heat_symptoms": 1,
+    "true_label": "Uncertain — flag for review",
+    "notes": "Judgment call: the direct check by the gym teacher (an adult who asked him questions and got immediate, correct answers) is stronger evidence than a vague secondhand comment from two students ('seems kinda out of it') with no specifics. That's not one of NATA's actual CNS dysfunction signs (confusion, loss of balance, irrational behavior, coma) -- just a vague impression that gets directly contradicted, so true_cns=0. The temperature (41.6C) is still above the 40.5C threshold, so per the rule this can't confidently be called Heat Exhaustion even though fatigue is present -- it lands in Uncertain, which is arguably the right real-world behavior anyway: an automated tool shouldn't confidently clear someone as 'just tired' at a temperature that high, even if he seems fine in the moment."
+  }
+]

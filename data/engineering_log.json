@@ -1,0 +1,86 @@
+{
+  "project": "Heat illness classifier",
+  "created": "2026-10-07T23:02:40",
+  "constraints": [
+    {
+      "text": "Official unit is Celsius; temperatures rounded to 0.1 C (half-up) before comparing",
+      "category": "technical",
+      "id": 1,
+      "added": "2026-10-07"
+    },
+    {
+      "text": "Heat Stroke threshold is strictly above 40.5 C (2015 NATA criteria)",
+      "category": "technical",
+      "id": 2,
+      "added": "2026-10-07"
+    },
+    {
+      "text": "Prompt text is locked before any test-set score is seen; experiments use dev cases only",
+      "category": "procedural",
+      "id": 3,
+      "added": "2026-10-07"
+    },
+    {
+      "text": "Web page and Python must give identical answers (check_parity.py)",
+      "category": "technical",
+      "id": 4,
+      "added": "2026-10-07"
+    },
+    {
+      "text": "Uses fictional vignettes only - no real patient data",
+      "category": "safety/ethics",
+      "id": 5,
+      "added": "2026-10-07"
+    },
+    {
+      "text": "Demo must work at the booth without internet (Demo mode)",
+      "category": "practical",
+      "id": 6,
+      "added": "2026-10-07"
+    }
+  ],
+  "criteria": [
+    {
+      "name": "Accuracy (strict exact match)",
+      "unit": "%",
+      "direction": ">=",
+      "target": 85.0,
+      "id": 1,
+      "added": "2026-10-07"
+    },
+    {
+      "name": "Heat Stroke recall",
+      "unit": "%",
+      "direction": ">=",
+      "target": 100.0,
+      "id": 2,
+      "added": "2026-10-07"
+    },
+    {
+      "name": "Dangerous misses",
+      "unit": "count",
+      "direction": "<=",
+      "target": 0.0,
+      "id": 3,
+      "added": "2026-10-07"
+    },
+    {
+      "name": "Run-to-run consistency",
+      "unit": "%",
+      "direction": ">=",
+      "target": 95.0,
+      "id": 4,
+      "added": "2026-10-07"
+    },
+    {
+      "name": "Unreadable AI replies",
+      "unit": "count",
+      "direction": "<=",
+      "target": 0.0,
+      "id": 5,
+      "added": "2026-10-07"
+    }
+  ],
+  "iterations": [],
+  "rubric_scores": {}
+}

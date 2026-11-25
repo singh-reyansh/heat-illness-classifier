@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="460" viewBox="0 0 900 460" font-family="Segoe UI, Arial, Helvetica, sans-serif">
+<title>Naive Bayes</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L9 5L1 9z" fill="#6b6f7b"/></marker></defs>
+<rect width="900" height="460" fill="#ffffff"/>
+<text x="30" y="36" font-size="19" fill="#10151f" font-weight="bold" text-anchor="start">Naive Bayes (the chatbot&#x27;s brain): count, multiply, compare</text>
+<text x="30" y="58" font-size="12.5" fill="#52514e" font-weight="normal" text-anchor="start">Example: training on 6 questions in 2 topics, then guessing the topic of &quot;can he drink it&quot;.</text>
+<rect x="30" y="80" width="260" height="200" rx="10" fill="#eaf2ff" stroke="#2a78d6" stroke-width="1.5"/>
+<text x="160.0" y="108" font-size="14" fill="#123f75" font-weight="bold" text-anchor="middle">1. TRAIN = count words</text>
+<text x="60" y="135" font-size="12.5" fill="#10151f" font-weight="bold" text-anchor="start">word</text>
+<text x="185" y="135" font-size="12.5" fill="#10151f" font-weight="bold" text-anchor="middle">water</text>
+<text x="250" y="135" font-size="12.5" fill="#10151f" font-weight="bold" text-anchor="middle">why</text>
+<text x="60" y="158" font-size="12.5" fill="#10151f" font-weight="normal" text-anchor="start">can</text>
+<text x="185" y="158" font-size="12.5" fill="#10151f" font-weight="normal" text-anchor="middle">2</text>
+<text x="250" y="158" font-size="12.5" fill="#10151f" font-weight="normal" text-anchor="middle">0</text>
+<text x="60" y="181" font-size="12.5" fill="#10151f" font-weight="normal" text-anchor="start">he</text>
+<text x="185" y="181" font-size="12.5" fill="#10151f" font-weight="normal" text-anchor="middle">2</text>
+<text x="250" y="181" font-size="12.5" fill="#10151f" font-weight="normal" text-anchor="middle">0</text>
+<text x="60" y="204" font-size="12.5" fill="#10151f" font-weight="normal" text-anchor="start">drink</text>
+<text x="185" y="204" font-size="12.5" fill="#10151f" font-weight="normal" text-anchor="middle">2</text>
+<text x="250" y="204" font-size="12.5" fill="#10151f" font-weight="normal" text-anchor="middle">0</text>
+<text x="60" y="227" font-size="12.5" fill="#10151f" font-weight="normal" text-anchor="start">it</text>
+<text x="185" y="227" font-size="12.5" fill="#10151f" font-weight="normal" text-anchor="middle">0</text>
+<text x="250" y="227" font-size="12.5" fill="#10151f" font-weight="normal" text-anchor="middle">2</text>
+<text x="60" y="250" font-size="12.5" fill="#10151f" font-weight="bold" text-anchor="start">total words</text>
+<text x="185" y="250" font-size="12.5" fill="#10151f" font-weight="bold" text-anchor="middle">11</text>
+<text x="250" y="250" font-size="12.5" fill="#10151f" font-weight="bold" text-anchor="middle">13</text>
+<rect x="320" y="80" width="270" height="200" rx="10" fill="#f3eeff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="455.0" y="108" font-size="14" fill="#43207f" font-weight="bold" text-anchor="middle">2. PREDICT = multiply</text>
+<text x="335" y="135" font-size="12" fill="#52514e" font-weight="normal" text-anchor="start">fraction = (count + 1) ÷ (total + 14)</text>
+<text x="335" y="158" font-size="12" fill="#10151f" font-weight="normal" text-anchor="start">water: ½ × 3/25 × 3/25 × 3/25 × 1/25</text>
+<text x="335" y="178" font-size="12" fill="#10151f" font-weight="bold" text-anchor="start">   = 0.0000346</text>
+<text x="335" y="206" font-size="12" fill="#10151f" font-weight="normal" text-anchor="start">why: ½ × 1/27 × 1/27 × 1/27 × 3/27</text>
+<text x="335" y="226" font-size="12" fill="#10151f" font-weight="bold" text-anchor="start">   = 0.0000028</text>
+<text x="335" y="256" font-size="11.5" fill="#52514e" font-weight="normal" text-anchor="start" font-style="italic">½ = the prior (3 of 6 questions)</text>
+<rect x="620" y="80" width="250" height="200" rx="10" fill="#e9f6ea" stroke="#2e8b57" stroke-width="1.5"/>
+<text x="745.0" y="108" font-size="14" fill="#1d5a37" font-weight="bold" text-anchor="middle">3. COMPARE = percentages</text>
+<text x="640" y="140" font-size="12.5" fill="#10151f" font-weight="bold" text-anchor="start">water</text>
+<rect x="690" y="128" width="147.84" height="18" rx="3" fill="#2e8b57" stroke="#2e8b57" stroke-width="1.5"/>
+<text x="700" y="170" font-size="13" fill="#1d5a37" font-weight="bold" text-anchor="start">92%</text>
+<text x="640" y="205" font-size="12.5" fill="#10151f" font-weight="bold" text-anchor="start">why</text>
+<rect x="690" y="193" width="12.16" height="18" rx="3" fill="#8b8f9b" stroke="#8b8f9b" stroke-width="1.5"/>
+<text x="712" y="207" font-size="13" fill="#52514e" font-weight="bold" text-anchor="start">8%</text>
+<text x="640" y="250" font-size="12" fill="#52514e" font-weight="normal" text-anchor="start">Below 50%? Say &quot;I&#x27;m not sure&quot;.</text>
+<path d="M290 180 L317 180" fill="none" stroke="#6b6f7b" stroke-width="1.8" marker-end="url(#a)"/>
+<path d="M590 180 L617 180" fill="none" stroke="#6b6f7b" stroke-width="1.8" marker-end="url(#a)"/>
+<text x="30" y="315" font-size="12.5" fill="#10151f" font-weight="normal" text-anchor="start">Why +1?  A word never seen in a topic would make its fraction 0, and anything × 0 = 0. Adding 1 prevents that (&quot;add-one smoothing&quot;).</text>
+<text x="30" y="340" font-size="12.5" fill="#10151f" font-weight="normal" text-anchor="start">Why &quot;naive&quot;?  It treats every word separately and ignores word order: &quot;is it heat stroke&quot; = &quot;stroke heat it is&quot;.</text>
+<text x="30" y="365" font-size="12.5" fill="#10151f" font-weight="normal" text-anchor="start">Why &quot;Bayes&quot;?  Bayes&#x27; rule flips the question: from &quot;how likely are these words in a water question?&quot;</text>
+<text x="30" y="385" font-size="12.5" fill="#10151f" font-weight="normal" text-anchor="start">                      to &quot;how likely is this a water question, given these words?&quot;</text>
+<text x="30" y="420" font-size="12.5" fill="#1d5a37" font-weight="bold" text-anchor="start">Checked: compare_with_sklearn.py shows this from-scratch version gives the same percentages as scikit-learn&#x27;s MultinomialNB.</text>
+</svg>

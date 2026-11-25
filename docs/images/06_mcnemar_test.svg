@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430" font-family="Segoe UI, Arial, Helvetica, sans-serif">
+<title>McNemar test</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L9 5L1 9z" fill="#6b6f7b"/></marker></defs>
+<rect width="880" height="430" fill="#ffffff"/>
+<text x="30" y="36" font-size="19" fill="#10151f" font-weight="bold" text-anchor="start">McNemar&#x27;s test: is the AI really better, or just lucky?</text>
+<text x="30" y="58" font-size="12.5" fill="#52514e" font-weight="normal" text-anchor="start">Both classifiers took the same 50-question test. Your real results, AI vs. keyword search:</text>
+<text x="360" y="84" font-size="13" fill="#52514e" font-weight="bold" text-anchor="middle">Keyword search was...</text>
+<text x="285.0" y="104" font-size="12.5" fill="#52514e" font-weight="bold" text-anchor="middle">right</text>
+<text x="435.0" y="104" font-size="12.5" fill="#52514e" font-weight="bold" text-anchor="middle">wrong</text>
+<text x="198" y="150.0" font-size="12.5" fill="#52514e" font-weight="bold" text-anchor="end">AI right</text>
+<text x="198" y="220.0" font-size="12.5" fill="#52514e" font-weight="bold" text-anchor="end">AI wrong</text>
+<rect x="210" y="110" width="150" height="70" rx="0" fill="#f7f7f5" stroke="#d9dbe2" stroke-width="1.2"/>
+<text x="285.0" y="142" font-size="22" fill="#3a3a37" font-weight="bold" text-anchor="middle">39</text>
+<text x="285.0" y="162" font-size="11.5" fill="#52514e" font-weight="normal" text-anchor="middle">both right</text>
+<rect x="360" y="110" width="150" height="70" rx="0" fill="#fff0e6" stroke="#eb6834" stroke-width="1.2"/>
+<text x="435.0" y="142" font-size="22" fill="#7a2e10" font-weight="bold" text-anchor="middle">10</text>
+<text x="435.0" y="162" font-size="11.5" fill="#52514e" font-weight="normal" text-anchor="middle">only AI right</text>
+<rect x="210" y="180" width="150" height="70" rx="0" fill="#fff0e6" stroke="#eb6834" stroke-width="1.2"/>
+<text x="285.0" y="212" font-size="22" fill="#7a2e10" font-weight="bold" text-anchor="middle">0</text>
+<text x="285.0" y="232" font-size="11.5" fill="#52514e" font-weight="normal" text-anchor="middle">only keyword right</text>
+<rect x="360" y="180" width="150" height="70" rx="0" fill="#f7f7f5" stroke="#d9dbe2" stroke-width="1.2"/>
+<text x="435.0" y="212" font-size="22" fill="#3a3a37" font-weight="bold" text-anchor="middle">1</text>
+<text x="435.0" y="232" font-size="11.5" fill="#52514e" font-weight="normal" text-anchor="middle">both wrong</text>
+<text x="30" y="280" font-size="12.5" fill="#10151f" font-weight="normal" text-anchor="start">Gray cells tell us nothing: both classifiers agreed. Only the orange cells (the disagreements) matter.</text>
+<rect x="560" y="95" width="290" height="155" rx="10" fill="#fff0e6" stroke="#eb6834" stroke-width="1.5"/>
+<text x="705.0" y="131.5" font-size="14" fill="#7a2e10" font-weight="bold" text-anchor="middle">Think of a coin flip</text>
+<text x="705.0" y="150.5" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">If both were equally good, each of the</text>
+<text x="705.0" y="167.5" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">10 disagreements would be a 50/50</text>
+<text x="705.0" y="184.5" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">coin flip. Getting 10 out of 10 for</text>
+<text x="705.0" y="201.5" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">the AI is like 10 heads in a row:</text>
+<text x="705.0" y="218.5" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">(1/2)^10 = 1/1024</text>
+<text x="30" y="315" font-size="13" fill="#10151f" font-weight="bold" text-anchor="start">p-value = chance of a result this lopsided if there were NO real difference</text>
+<text x="30" y="337" font-size="12.5" fill="#52514e" font-weight="normal" text-anchor="start">= 2 × 1/1024 = 0.002   (times 2 because a 10-to-0 win for EITHER side would be just as surprising)</text>
+<text x="30" y="370" font-size="13" fill="#1d5a37" font-weight="bold" text-anchor="start">Since 0.002 is far below 0.05, the difference is very unlikely to be luck: the AI really is better.</text>
+<text x="30" y="392" font-size="12" fill="#52514e" font-weight="normal" text-anchor="start">Why not a regular test? Both classifiers answered the SAME cases, so the results are paired. McNemar is built for paired results.</text>
+</svg>

@@ -1,0 +1,102 @@
+[
+ {
+  "id": "V101",
+  "symptom_text": "A rugby player says he feels dizzy and lightheaded after a long sprint drill. He sits down, answers all questions correctly, and can walk steadily to the water cooler.",
+  "temperature_c": 38.9,
+  "temperature_source": "oral",
+  "true_cns": 0,
+  "true_heat_symptoms": 1,
+  "true_label": "Heat Exhaustion",
+  "notes": "Practice case: dizziness alone is a heat symptom, not a CNS sign."
+ },
+ {
+  "id": "V102",
+  "symptom_text": "A gardener working in full sun keeps veering off the path while carrying a hose and cannot seem to walk in a straight line. He says he is fine and knows his own name.",
+  "temperature_c": 39.6,
+  "temperature_source": "tympanic",
+  "true_cns": 1,
+  "true_heat_symptoms": 0,
+  "true_label": "Heat Stroke",
+  "notes": "Practice case: loss of balance / unable to walk straight is a CNS sign."
+ },
+ {
+  "id": "V103",
+  "symptom_text": "A field hockey player snaps at her coach for no clear reason, throws her stick, and shouts that everyone is against her. Her teammates say this is completely unlike her.",
+  "temperature_c": 40.0,
+  "temperature_source": "rectal",
+  "true_cns": 1,
+  "true_heat_symptoms": 0,
+  "true_label": "Heat Stroke",
+  "notes": "Practice case: sudden irritable, combative, out-of-character behavior."
+ },
+ {
+  "id": "V104",
+  "symptom_text": "A student helper at a track meet feels hot and a bit annoyed that the heat is making her sweat so much, but she is chatting normally and only wants more water.",
+  "temperature_c": 37.8,
+  "temperature_source": "oral",
+  "true_cns": 0,
+  "true_heat_symptoms": 1,
+  "true_label": "Heat Exhaustion",
+  "notes": "Practice case: mild annoyance with sweating is not irritability as a CNS sign; heat symptom (sweating) present."
+ },
+ {
+  "id": "V105",
+  "symptom_text": "A hiker sits down on the trail and says his legs are cramping badly. He is sweating, alert, and tells his friends exactly how far they have walked.",
+  "temperature_c": 39.0,
+  "temperature_source": "oral",
+  "true_cns": 0,
+  "true_heat_symptoms": 1,
+  "true_label": "Heat Exhaustion",
+  "notes": "Practice case: cramping with normal orientation."
+ },
+ {
+  "id": "V106",
+  "symptom_text": "A player collapses on the field during a hot afternoon game, lies still for several seconds, then does not respond to the coach's questions and stares past him.",
+  "temperature_c": 40.9,
+  "temperature_source": "rectal",
+  "true_cns": 1,
+  "true_heat_symptoms": 0,
+  "true_label": "Heat Stroke",
+  "notes": "Practice case: collapse with altered responsiveness."
+ },
+ {
+  "id": "V107",
+  "symptom_text": "A cyclist feels very tired after a ride, with no sweating issues, dizziness, nausea, or cramps. He is alert, drinking water, and says he just needs a nap.",
+  "temperature_c": 37.5,
+  "temperature_source": "oral",
+  "true_cns": 0,
+  "true_heat_symptoms": 1,
+  "true_label": "Heat Exhaustion",
+  "notes": "Practice case: fatigue is a listed heat symptom under this rule; deliberately simple."
+ },
+ {
+  "id": "V108",
+  "symptom_text": "A coach reports an athlete stood up too fast after stretching, felt a head rush for a few seconds, and then felt completely normal. No sweating, nausea, or cramps.",
+  "temperature_c": 37.2,
+  "temperature_source": "oral",
+  "true_cns": 0,
+  "true_heat_symptoms": 0,
+  "true_label": "Not Heat Illness — no thermal stress indicated",
+  "notes": "Practice case: brief head rush that resolved, no heat-related symptoms."
+ },
+ {
+  "id": "V109",
+  "symptom_text": "A lifeguard on a hot beach looks flushed and says she is very weak. She speaks clearly, knows where she is and who is on duty, and is sipping water.",
+  "temperature_c": 40.8,
+  "temperature_source": "forehead",
+  "true_cns": 0,
+  "true_heat_symptoms": 1,
+  "true_label": "Uncertain — flag for review",
+  "notes": "Practice case: forehead reading above 40.5 C with no CNS signs."
+ },
+ {
+  "id": "V110",
+  "symptom_text": "A runner finishing a race seems to be having a seizure and is unresponsive afterward; bystanders say he had been running in the afternoon heat.",
+  "temperature_c": 41.5,
+  "temperature_source": "rectal",
+  "true_cns": 1,
+  "true_heat_symptoms": 0,
+  "true_label": "Heat Stroke",
+  "notes": "Practice case: seizure with unresponsiveness."
+ }
+]

@@ -1,0 +1,702 @@
+[
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A 16-year-old runner comes off the track heavily sweating, pale, and complaining of nausea and weakness. She is answering questions normally and knows where she is.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The runner is alert, oriented, and able to answer questions normally, indicating no CNS dysfunction.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_f102a3179c"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A 16-year-old runner comes off the track heavily sweating, pale, and complaining of nausea and weakness. She is answering questions normally and knows where she is.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The description includes heavy sweating, nausea, and weakness, which are heat\u2011related symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_e11c8bbf69"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A construction worker is found slumped against a wall, unresponsive to his name, and does not react when someone shakes his shoulder.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The worker is unresponsive and does not react to stimuli, indicating loss of consciousness, a CNS sign.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_e189667b30"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A construction worker is found slumped against a wall, unresponsive to his name, and does not react when someone shakes his shoulder.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The description does not mention any of the listed heat-related symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_816fc87d18"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A marching band member is confused about what day it is and can't follow simple instructions, though she is still walking and talking.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The patient is confused and unable to follow simple instructions, indicating CNS dysfunction.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_feb9b278f1"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A marching band member is confused about what day it is and can't follow simple instructions, though she is still walking and talking.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The description only mentions confusion and inability to follow instructions, with no mention of heavy sweating, weakness, nausea, dizziness, lightheadedness, cramping, or fatigue.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_9340e7d14d"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A hiker reports feeling dizzy and having a headache but answers every question correctly and recognizes his hiking partner.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The hiker is fully oriented, answers questions correctly, and recognizes his partner, indicating no CNS dysfunction.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_e11c8bbf69"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A hiker reports feeling dizzy and having a headache but answers every question correctly and recognizes his hiking partner.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The hiker reports dizziness, which is a heat-related symptom.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_63473661d7"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A football player is sweating heavily and looks exhausted after practice but is alert, oriented, and joking with teammates.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The player is alert, oriented, and joking, showing no confusion, disorientation, or other CNS dysfunction signs.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_e99e93f2ac"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A football player is sweating heavily and looks exhausted after practice but is alert, oriented, and joking with teammates.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The description includes heavy sweating and exhaustion, indicating heat-related symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_e99e93f2ac"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A coworker says the patient 'seemed a little off' during the shift, gave a couple of one-word answers that didn't quite make sense, but otherwise seemed to be functioning normally.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The coworker noted nonsensical one-word answers, indicating confusion, which is a CNS sign.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_9b8528b477"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A coworker says the patient 'seemed a little off' during the shift, gave a couple of one-word answers that didn't quite make sense, but otherwise seemed to be functioning normally.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The description does not mention heavy sweating, weakness, nausea, dizziness, lightheadedness, cramping, or fatigue.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_c5a89987dc"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A 23-year-old male was found unconscious in a construction building; minutes earlier he had been walking and behaving erratically and drinking excessive amounts of fluids.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: He was found unconscious and had been behaving erratically, indicating CNS dysfunction.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_976a85d17a"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A 23-year-old male was found unconscious in a construction building; minutes earlier he had been walking and behaving erratically and drinking excessive amounts of fluids.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The description does not mention heavy sweating, weakness, nausea, dizziness, lightheadedness, cramping, or fatigue.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_ce54c53bd5"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A teammate says the athlete has been acting unusually irritable and argumentative for the last ten minutes, snapping at people over nothing.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The athlete\u2019s sudden irritability and combative behavior meet the criteria for CNS dysfunction.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_8b41efc9a3"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A teammate says the athlete has been acting unusually irritable and argumentative for the last ten minutes, snapping at people over nothing.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The description only mentions irritability and argumentative behavior, with no mention of sweating, weakness, nausea, dizziness, lightheadedness, cramping, or fatigue.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_80501ff3a1"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A softball player during a tournament complains of nausea, heavy sweating, and muscle cramps in her legs. She is talking normally and recognizes her coach.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The player is speaking normally, recognizes her coach, and shows no confusion, disorientation, or loss of balance, indicating no CNS dysfunction.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_8b41efc9a3"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A softball player during a tournament complains of nausea, heavy sweating, and muscle cramps in her legs. She is talking normally and recognizes her coach.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The description lists nausea, heavy sweating, and muscle cramps, all of which are heat\u2011related symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_5979a0e1b7"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A landscaper collapses on the job site and cannot be woken by shouting or shaking; coworkers say he had been working in direct sun for hours without breaks.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The landscaper collapsed and was unresponsive, indicating loss of consciousness, a CNS sign.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_976a85d17a"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A landscaper collapses on the job site and cannot be woken by shouting or shaking; coworkers say he had been working in direct sun for hours without breaks.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The description does not mention any of the listed heat-related symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_a8c584dda7"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A hiker on a hot trail keeps stumbling and losing her balance on flat ground, even though she isn't complaining of any pain or dizziness.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The hiker\u2019s repeated stumbling and loss of balance on flat ground indicates a CNS sign of impaired coordination.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_a8c584dda7"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A hiker on a hot trail keeps stumbling and losing her balance on flat ground, even though she isn't complaining of any pain or dizziness.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The description only mentions stumbling and loss of balance, with no mention of heavy sweating, weakness, nausea, dizziness, lightheadedness, cramping, or fatigue.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_996f667773"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A tennis player is drenched in sweat and reports painful cramping in both calves, but is answering questions clearly and knows the score of the match.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The player is answering questions clearly and knows the score, indicating no confusion or other CNS dysfunction signs.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_816fc87d18"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A tennis player is drenched in sweat and reports painful cramping in both calves, but is answering questions clearly and knows the score of the match.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The description includes heavy sweating and calf cramping, which are heat\u2011related symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_75c733514d"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A student says he has a mild headache and just wants to sit down for a minute, but mentions he only slept four hours last night and skipped breakfast.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The student reports only a mild headache and fatigue from lack of sleep, with no confusion, disorientation, loss of balance, or other CNS symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_f102a3179c"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A student says he has a mild headache and just wants to sit down for a minute, but mentions he only slept four hours last night and skipped breakfast.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The description does not mention any of the listed heat-related symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_bb6a356524"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A camper is coughing and has a runny nose during a midday hike, but otherwise feels fine and is walking at a normal pace.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The camper shows no confusion, loss of balance, or other CNS symptoms\u2014only mild respiratory symptoms and normal walking.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_e11c8bbf69"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A camper is coughing and has a runny nose during a midday hike, but otherwise feels fine and is walking at a normal pace.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The description only mentions coughing, a runny nose, and normal walking, with no heat\u2011related symptoms listed.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_3826805fb8"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A soccer player reports feeling weak and 'not quite right' late in a match, and when asked what city they're in, gives the name of last week's away game instead.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The player\u2019s inability to correctly identify their current location indicates confusion or disorientation, a CNS sign.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_75c733514d"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A soccer player reports feeling weak and 'not quite right' late in a match, and when asked what city they're in, gives the name of last week's away game instead.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The player reports feeling weak, which is a heat\u2011related symptom.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_9340e7d14d"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A warehouse worker is sweating heavily, feels dizzy, and has to sit down, but is fully alert and correctly explains what shift he's on and who his supervisor is.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The worker is fully alert, coherent, and able to explain details, indicating no CNS dysfunction.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_9b8528b477"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A warehouse worker is sweating heavily, feels dizzy, and has to sit down, but is fully alert and correctly explains what shift he's on and who his supervisor is.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The description includes heavy sweating and dizziness, which are heat-related symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_816fc87d18"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A teammate mentions the runner 'walked off kind of funny' after finishing a 5K on a hot morning, but by the time medical staff reach her she is sitting up, drinking water, and chatting normally.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The runner is alert, oriented, and able to converse normally, indicating no CNS dysfunction.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_d3e146e1a5"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A teammate mentions the runner 'walked off kind of funny' after finishing a 5K on a hot morning, but by the time medical staff reach her she is sitting up, drinking water, and chatting normally.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The description does not mention any of the listed heat-related symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_ef00694abe"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A cyclist finishing a long ride in the heat is nauseated and fatigued, and mentions his vision 'went a little blurry' for a few seconds but has been fine since.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The cyclist only reports brief blurry vision, nausea, and fatigue, with no confusion, loss of balance, or other CNS symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_c5a89987dc"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A cyclist finishing a long ride in the heat is nauseated and fatigued, and mentions his vision 'went a little blurry' for a few seconds but has been fine since.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The cyclist reports nausea and fatigue, which are heat\u2011related symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_e23fc997ca"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A referee walks off the field holding his head, says the sun is 'too loud today,' and then immediately apologizes and says he's not sure why he said that.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The referee\u2019s nonsensical comment about the sun being \u201ctoo loud\u201d and his immediate apology indicating uncertainty shows confusion and disorientation, a CNS sign.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_ce54c53bd5"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A referee walks off the field holding his head, says the sun is 'too loud today,' and then immediately apologizes and says he's not sure why he said that.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The description does not mention any of the listed heat-related symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_996f667773"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A gym teacher overhears two students say the kid doing suicides in the heat 'seems kinda out of it,' but when she checks on him directly, he answers all her questions immediately and correctly, just seems tired.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The student answers questions correctly and shows no confusion, disorientation, or loss of balance, indicating no CNS dysfunction.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_ce54c53bd5"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A gym teacher overhears two students say the kid doing suicides in the heat 'seems kinda out of it,' but when she checks on him directly, he answers all her questions immediately and correctly, just seems tired.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The description notes that the student \"just seems tired,\" indicating fatigue, a heat-related symptom.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_8b41efc9a3"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A high school cross-country runner finishes a 5K in 92\u00b0F weather, bends over with her hands on her knees, and says she feels dizzy and really tired. She walks to the water table on her own and answers the athletic trainer's questions correctly.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: She is able to walk, orient herself, and answer questions correctly, indicating no CNS dysfunction.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_228717f27c"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A high school cross-country runner finishes a 5K in 92\u00b0F weather, bends over with her hands on her knees, and says she feels dizzy and really tired. She walks to the water table on her own and answers the athletic trainer's questions correctly.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The runner reports dizziness and fatigue, both of which are listed heat\u2011related symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_a12402de73"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: During a summer football practice, a lineman starts staggering sideways, then looks at his coach and asks which team they are playing today. He is sweating heavily and cannot walk in a straight line.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The patient is staggering, cannot walk straight, and is confused about the game, indicating CNS dysfunction.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_9340e7d14d"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: During a summer football practice, a lineman starts staggering sideways, then looks at his coach and asks which team they are playing today. He is sweating heavily and cannot walk in a straight line.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The description includes heavy sweating, a recognized heat-related symptom.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_3826805fb8"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A roofer on a 98\u00b0F afternoon says he feels nauseated, has a pounding headache, and needs to sit down. He is sweating heavily, knows his name, the date, and where he is, and has been drinking water.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The roofer is oriented, not confused, and shows no signs of loss of balance, coordination, or altered mental status.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_d3e146e1a5"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A roofer on a 98\u00b0F afternoon says he feels nauseated, has a pounding headache, and needs to sit down. He is sweating heavily, knows his name, the date, and where he is, and has been drinking water.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The description includes heavy sweating and nausea, which are heat\u2011related symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_9b8528b477"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A soccer parent notices a 12-year-old player stop running mid-game and stare blankly. When called, the boy does not respond to his name and then begins to laugh at nothing. His skin feels hot and dry.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The child\u2019s blank stare, lack of response to name, and laughing at nothing indicate confusion and bizarre behavior, which are signs of CNS dysfunction.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_816fc87d18"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A soccer parent notices a 12-year-old player stop running mid-game and stare blankly. When called, the boy does not respond to his name and then begins to laugh at nothing. His skin feels hot and dry.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The description only notes hot, dry skin, which is not one of the listed heat-related symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_a4315eb300"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A volleyball player in a non-air-conditioned gym reports lightheadedness and feels weak after the second set. She is sweating, is alert, and correctly names the score and her teammates.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The player is alert, can correctly name the score and teammates, and shows no confusion, disorientation, or loss of balance, indicating no CNS dysfunction.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_8d13edce1d"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A volleyball player in a non-air-conditioned gym reports lightheadedness and feels weak after the second set. She is sweating, is alert, and correctly names the score and her teammates.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The description includes lightheadedness, weakness, and sweating, all of which are heat-related symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_ed70b23331"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A soldier on a training march sits down and says he is just tired and his legs are cramping. He answers every question quickly and accurately, including his unit and the day of the week.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: He is answering questions accurately and shows no confusion, disorientation, or loss of balance.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_f8aab374e8"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A soldier on a training march sits down and says he is just tired and his legs are cramping. He answers every question quickly and accurately, including his unit and the day of the week.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The description notes fatigue (\u201cjust tired\u201d) and leg cramping, both of which are heat\u2011related symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_92d51d08e5"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A marathon runner is found about a mile before the finish line walking in circles. He does not recognize his wife when she calls to him and mumbles that he needs to go to work.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The runner is walking in circles and cannot recognize his wife, indicating confusion and disorientation, which are CNS signs.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_a8c584dda7"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A marathon runner is found about a mile before the finish line walking in circles. He does not recognize his wife when she calls to him and mumbles that he needs to go to work.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The description does not mention any of the listed heat-related symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_8b41efc9a3"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A student volunteer at an outdoor charity event feels a little warm and says her head hurts. She has been standing in the shade, is drinking water, and is chatting normally with the other volunteers.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The volunteer is speaking normally and shows no confusion, disorientation, loss of balance, or other CNS symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_bb6a356524"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A student volunteer at an outdoor charity event feels a little warm and says her head hurts. She has been standing in the shade, is drinking water, and is chatting normally with the other volunteers.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The description only mentions feeling warm and having a headache, with no heavy sweating, weakness, nausea, dizziness, lightheadedness, cramping, or fatigue.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_f8aab374e8"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A golf course groundskeeper is mowing in 100\u00b0F heat when he starts slurring his words and tells a coworker that the mower is talking to him. He is sweating and flushed.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The slurred speech and delusional statement about the mower indicate CNS dysfunction.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_587d0d67cc"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A golf course groundskeeper is mowing in 100\u00b0F heat when he starts slurring his words and tells a coworker that the mower is talking to him. He is sweating and flushed.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The description includes sweating, which is a heat-related symptom.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_e189667b30"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A swimmer at an outdoor meet says she feels sick to her stomach and shaky after back-to-back races in direct sun. She is sitting up, is alert, and tells the coach exactly which events she has left.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The swimmer is alert, coherent, and able to communicate her remaining events, indicating no CNS dysfunction.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_8b41efc9a3"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A swimmer at an outdoor meet says she feels sick to her stomach and shaky after back-to-back races in direct sun. She is sitting up, is alert, and tells the coach exactly which events she has left.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The swimmer reports feeling sick to her stomach, which is a heat\u2011related symptom (nausea).",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_a8c584dda7"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A delivery driver collapses after unloading a truck on a hot afternoon. Bystanders say he did not respond when they shouted, then opened his eyes but could not say where he was.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: He collapsed, was unresponsive, then opened his eyes but could not identify his location, indicating confusion or disorientation, a CNS sign.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_ed70b23331"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A delivery driver collapses after unloading a truck on a hot afternoon. Bystanders say he did not respond when they shouted, then opened his eyes but could not say where he was.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The description does not mention any of the listed heat-related symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_8b41efc9a3"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A cheerleader at an outdoor pep rally in full uniform complains that she is dizzy and has painful cramps in her abdomen. She is sweating, is alert, and answers questions about the routine without trouble.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The cheerleader is alert, coherent, and able to answer questions, showing no confusion, disorientation, or loss of balance.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_a12402de73"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A cheerleader at an outdoor pep rally in full uniform complains that she is dizzy and has painful cramps in her abdomen. She is sweating, is alert, and answers questions about the routine without trouble.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The description includes dizziness, abdominal cramps, and sweating, all of which are heat\u2011related symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_d23c14756c"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A hiker's friend says he has been very quiet for the past hour and is walking much slower than usual. When asked how he feels he says, \"Fine, I'm just tired,\" and answers questions about the route correctly.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The hiker is quiet and walking slower but can answer questions correctly, showing no confusion, disorientation, or other CNS symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_80501ff3a1"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A hiker's friend says he has been very quiet for the past hour and is walking much slower than usual. When asked how he feels he says, \"Fine, I'm just tired,\" and answers questions about the route correctly.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The description states the hiker feels \u201ctired,\u201d which is a synonym for fatigue, a heat\u2011related symptom.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_2b688e7cc3"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A lacrosse player collapses in the third quarter, is carried off by teammates, and when the trainer arrives he is combative and keeps trying to stand up, shouting that he has to get back in the game.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The player is combative and attempting to stand, indicating CNS dysfunction.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_ed70b23331"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A lacrosse player collapses in the third quarter, is carried off by teammates, and when the trainer arrives he is combative and keeps trying to stand up, shouting that he has to get back in the game.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The description does not mention any of the listed heat-related symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_d3e146e1a5"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A warehouse employee reports that it is very hot on the loading dock, but he feels fine. He has no complaints, is moving normally, and is talking with coworkers on his break.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The employee reports feeling fine, moving normally, and talking normally, with no signs of confusion, disorientation, or loss of balance.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_f102a3179c"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A warehouse employee reports that it is very hot on the loading dock, but he feels fine. He has no complaints, is moving normally, and is talking with coworkers on his break.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The description states the employee feels fine, has no complaints, and is moving normally, with no mention of sweating, weakness, nausea, dizziness, lightheadedness, cramping, or fatigue.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_a12402de73"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A tennis player late in a three-set match says she feels weak and a little nauseated. She sits down, takes sips of water, and clearly describes the score and who serves next.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: She is clearly oriented, able to describe the score and next server, indicating no CNS dysfunction.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_84bb35977d"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A tennis player late in a three-set match says she feels weak and a little nauseated. She sits down, takes sips of water, and clearly describes the score and who serves next.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The description includes weakness and nausea, which are heat\u2011related symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_e99e93f2ac"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A bus driver at a youth camp says he feels light-headed and \"shaky\" after standing in the parking lot for two hours. He is sweating, speaks clearly, and knows the camp schedule.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: He is light\u2011headed but speaks clearly, knows the schedule, and shows no confusion, loss of balance, or other CNS symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_ce54c53bd5"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A bus driver at a youth camp says he feels light-headed and \"shaky\" after standing in the parking lot for two hours. He is sweating, speaks clearly, and knows the camp schedule.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The description includes light-headedness (a form of dizziness/lightheadedness) and sweating, both heat-related symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_f102a3179c"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A water polo coach reports that one of his players seems unusually quiet. The player says he slept badly and has a sore throat, is coughing, and has no other complaints. He answers questions normally.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The player is alert, oriented, and answers questions normally, showing no confusion, disorientation, or other CNS symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_e23fc997ca"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A water polo coach reports that one of his players seems unusually quiet. The player says he slept badly and has a sore throat, is coughing, and has no other complaints. He answers questions normally.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The description does not mention any of the listed heat-related symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_d23c14756c"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A football player at a summer camp is dizzy, sweating heavily, and says his legs feel weak. He is alert, can recite the plays from that morning's practice, and jokes with the trainer.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: He is alert, coherent, and able to joke, showing no confusion, disorientation, or loss of balance.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_a8c584dda7"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A football player at a summer camp is dizzy, sweating heavily, and says his legs feel weak. He is alert, can recite the plays from that morning's practice, and jokes with the trainer.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The description includes dizziness, heavy sweating, and leg weakness, all of which are heat-related symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_f102a3179c"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A teacher chaperoning an outdoor field day sits down suddenly and says everything feels \"fuzzy.\" She cannot recall what grade she is supervising and repeats the same question twice.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The teacher\u2019s sudden confusion, inability to recall her role, and repetitive questioning indicate central nervous system dysfunction.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_ef00694abe"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A teacher chaperoning an outdoor field day sits down suddenly and says everything feels \"fuzzy.\" She cannot recall what grade she is supervising and repeats the same question twice.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The description only mentions confusion and memory issues, with no mention of sweating, weakness, nausea, dizziness, cramping, or fatigue.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_a8c584dda7"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A cyclist rides for three hours in 95\u00b0F heat and stops at a rest area feeling nauseated, with cramps in both thighs. He talks normally, recognizes his riding partners, and is drinking fluids.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The cyclist is speaking normally, recognizing companions, and drinking fluids, with no confusion, disorientation, loss of balance, or other CNS symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_a8c584dda7"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A cyclist rides for three hours in 95\u00b0F heat and stops at a rest area feeling nauseated, with cramps in both thighs. He talks normally, recognizes his riding partners, and is drinking fluids.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The cyclist reports nausea and thigh cramps, which are heat\u2011related symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_a8c584dda7"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A construction worker is found sitting on the ground, soaked in sweat, saying he feels extremely weak. He gives his name and address correctly and knows what day it is.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: He can correctly state his name, address, and the day, showing no confusion or disorientation.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_228717f27c"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A construction worker is found sitting on the ground, soaked in sweat, saying he feels extremely weak. He gives his name and address correctly and knows what day it is.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The description includes heavy sweating (soaked in sweat) and weakness (feels extremely weak).",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_84bb35977d"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A band member in a marching rehearsal faints for a few seconds when the group stops, and then wakes up on the grass. Within a minute she is sitting up, answers every question correctly, and says she stood up too fast.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: She regained consciousness quickly, answered questions correctly, and reported a simple orthostatic reaction, with no confusion, disorientation, or loss of balance.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_8b41efc9a3"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A band member in a marching rehearsal faints for a few seconds when the group stops, and then wakes up on the grass. Within a minute she is sitting up, answers every question correctly, and says she stood up too fast.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The description does not mention heavy sweating, weakness, nausea, dizziness, lightheadedness, cramping, or fatigue.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_8b41efc9a3"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A baseball catcher at a doubleheader in July is sweating heavily and tells the coach he feels sick to his stomach. When asked what inning it is, he gives the correct inning and the score.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: He is fully oriented, correctly reports the inning and score, indicating no CNS dysfunction.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_ce54c53bd5"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A baseball catcher at a doubleheader in July is sweating heavily and tells the coach he feels sick to his stomach. When asked what inning it is, he gives the correct inning and the score.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The description includes heavy sweating and nausea, both heat\u2011related symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_9b8528b477"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A trail runner is found by another runner stumbling off the path. He says he \"can't remember how I got here\" and cannot say what race he is in. He is hot to the touch.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The runner is stumbling, confused, and disoriented, indicating CNS dysfunction.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_5979a0e1b7"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A trail runner is found by another runner stumbling off the path. He says he \"can't remember how I got here\" and cannot say what race he is in. He is hot to the touch.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The description only notes that the runner is hot to the touch, which is not one of the listed heat-related symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_996f667773"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A park ranger in a hot canyon feels very tired and weak after a long hike and says she needs to rest. She is alert, correctly describes the trail, and has clear speech.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The ranger is alert, coherent, and able to describe the trail, showing no signs of CNS dysfunction.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_8d13edce1d"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A park ranger in a hot canyon feels very tired and weak after a long hike and says she needs to rest. She is alert, correctly describes the trail, and has clear speech.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The ranger reports feeling very tired and weak, indicating fatigue and weakness, which are heat\u2011related symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_c5a89987dc"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A middle school soccer player says he feels fine but hot, and wants to keep playing. He has no dizziness, nausea, or cramps, is not sweating more than his teammates, and talks normally.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The player reports feeling fine, has no confusion, disorientation, or abnormal behavior, and speaks normally, indicating no CNS dysfunction.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_8e23cedc90"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A middle school soccer player says he feels fine but hot, and wants to keep playing. He has no dizziness, nausea, or cramps, is not sweating more than his teammates, and talks normally.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The description reports no heavy sweating, weakness, nausea, dizziness, cramps, or fatigue.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_a4315eb300"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A shift worker at a steel plant starts to speak in short broken sentences, cannot name his supervisor, and begins taking off his shirt and hard hat and walking toward an exit.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The worker exhibits confusion, disorientation, and inappropriate behavior (short broken sentences, inability to name his supervisor, and removing protective gear to walk toward an exit).",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_587d0d67cc"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A shift worker at a steel plant starts to speak in short broken sentences, cannot name his supervisor, and begins taking off his shirt and hard hat and walking toward an exit.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The description does not mention any of the listed heat-related symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_996f667773"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A softball pitcher says she feels dizzy and has a headache after the third inning. She sits in the shade, drinks water, and identifies where she is and what day it is without hesitation.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: She is fully oriented, with no confusion, disorientation, or loss of balance, indicating no CNS dysfunction.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_ce54c53bd5"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A softball pitcher says she feels dizzy and has a headache after the third inning. She sits in the shade, drinks water, and identifies where she is and what day it is without hesitation.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 1  \nReason: The pitcher reports dizziness, which is a listed heat-related symptom.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_d23c14756c"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it show signs of central nervous system (CNS) dysfunction \u2014 confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.\n\nDescription: A rower finishes a race on a hot morning and tells the coxswain that he feels a little stiff and sore. He is breathing normally, answers questions clearly, and has no complaints of dizziness, nausea, or cramping.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The rower shows no confusion, disorientation, loss of balance, or other CNS symptoms.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_e189667b30"
+ },
+ {
+  "prompt": "You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the description below, does it mention any heat-related symptom \u2014 heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.\n\nDescription: A rower finishes a race on a hot morning and tells the coxswain that he feels a little stiff and sore. He is breathing normally, answers questions clearly, and has no complaints of dizziness, nausea, or cramping.\n\nRespond in exactly this format:\nAnswer: 1 or 0\nReason: one sentence",
+  "reply": "Answer: 0  \nReason: The description only mentions stiffness and soreness, with no mention of heavy sweating, weakness, nausea, dizziness, lightheadedness, cramping, or fatigue.",
+  "model": "openai/gpt-oss-20b",
+  "requested_model": "openai/gpt-oss-20b",
+  "system_fingerprint": "fp_c5a89987dc"
+ }
+]

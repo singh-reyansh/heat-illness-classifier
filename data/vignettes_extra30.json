@@ -1,0 +1,302 @@
+[
+ {
+  "id": "V021",
+  "symptom_text": "A high school cross-country runner finishes a 5K in 92°F weather, bends over with her hands on her knees, and says she feels dizzy and really tired. She walks to the water table on her own and answers the athletic trainer's questions correctly.",
+  "temperature_c": 39.1,
+  "temperature_source": "oral",
+  "true_cns": 0,
+  "true_heat_symptoms": 1,
+  "true_label": "Heat Exhaustion",
+  "notes": "Clear heat symptoms (dizziness, fatigue), fully oriented, temperature well under 40.5°C."
+ },
+ {
+  "id": "V022",
+  "symptom_text": "During a summer football practice, a lineman starts staggering sideways, then looks at his coach and asks which team they are playing today. He is sweating heavily and cannot walk in a straight line.",
+  "temperature_c": 40.9,
+  "temperature_source": "rectal",
+  "true_cns": 1,
+  "true_heat_symptoms": 1,
+  "true_label": "Heat Stroke",
+  "notes": "Confusion and loss of balance with a rectal temperature above 40.5°C; textbook exertional heat stroke."
+ },
+ {
+  "id": "V023",
+  "symptom_text": "A roofer on a 98°F afternoon says he feels nauseated, has a pounding headache, and needs to sit down. He is sweating heavily, knows his name, the date, and where he is, and has been drinking water.",
+  "temperature_c": 38.7,
+  "temperature_source": "tympanic",
+  "true_cns": 0,
+  "true_heat_symptoms": 1,
+  "true_label": "Heat Exhaustion",
+  "notes": "Occupational setting; heat symptoms without any CNS involvement."
+ },
+ {
+  "id": "V024",
+  "symptom_text": "A soccer parent notices a 12-year-old player stop running mid-game and stare blankly. When called, the boy does not respond to his name and then begins to laugh at nothing. His skin feels hot and dry.",
+  "temperature_c": 40.2,
+  "temperature_source": "forehead",
+  "true_cns": 1,
+  "true_heat_symptoms": 0,
+  "true_label": "Heat Stroke",
+  "notes": "Altered behavior and unresponsiveness; the forehead reading is below 40.5°C but CNS dysfunction decides the label."
+ },
+ {
+  "id": "V025",
+  "symptom_text": "A volleyball player in a non-air-conditioned gym reports lightheadedness and feels weak after the second set. She is sweating, is alert, and correctly names the score and her teammates.",
+  "temperature_c": 38.4,
+  "temperature_source": "oral",
+  "true_cns": 0,
+  "true_heat_symptoms": 1,
+  "true_label": "Heat Exhaustion",
+  "notes": "Mild heat exhaustion in an indoor, poorly cooled setting."
+ },
+ {
+  "id": "V026",
+  "symptom_text": "A soldier on a training march sits down and says he is just tired and his legs are cramping. He answers every question quickly and accurately, including his unit and the day of the week.",
+  "temperature_c": 40.7,
+  "temperature_source": "rectal",
+  "true_cns": 0,
+  "true_heat_symptoms": 1,
+  "true_label": "Uncertain — flag for review",
+  "notes": "Rectal temperature above 40.5°C with no CNS signs: the rule flags this for clinical review instead of assigning a label."
+ },
+ {
+  "id": "V027",
+  "symptom_text": "A marathon runner is found about a mile before the finish line walking in circles. He does not recognize his wife when she calls to him and mumbles that he needs to go to work.",
+  "temperature_c": 41.4,
+  "temperature_source": "rectal",
+  "true_cns": 1,
+  "true_heat_symptoms": 0,
+  "true_label": "Heat Stroke",
+  "notes": "Disorientation and failure to recognize a familiar person with a very high rectal temperature."
+ },
+ {
+  "id": "V028",
+  "symptom_text": "A student volunteer at an outdoor charity event feels a little warm and says her head hurts. She has been standing in the shade, is drinking water, and is chatting normally with the other volunteers.",
+  "temperature_c": 37.2,
+  "temperature_source": "oral",
+  "true_cns": 0,
+  "true_heat_symptoms": 0,
+  "true_label": "Not Heat Illness — no thermal stress indicated",
+  "notes": "Normal temperature, no heat-specific symptoms; a headache alone does not meet the criteria."
+ },
+ {
+  "id": "V029",
+  "symptom_text": "A golf course groundskeeper is mowing in 100°F heat when he starts slurring his words and tells a coworker that the mower is talking to him. He is sweating and flushed.",
+  "temperature_c": 40.1,
+  "temperature_source": "tympanic",
+  "true_cns": 1,
+  "true_heat_symptoms": 1,
+  "true_label": "Heat Stroke",
+  "notes": "Irrational behavior and slurred speech; temperature is below 40.5°C but CNS dysfunction overrides it."
+ },
+ {
+  "id": "V030",
+  "symptom_text": "A swimmer at an outdoor meet says she feels sick to her stomach and shaky after back-to-back races in direct sun. She is sitting up, is alert, and tells the coach exactly which events she has left.",
+  "temperature_c": 38.8,
+  "temperature_source": "oral",
+  "true_cns": 0,
+  "true_heat_symptoms": 1,
+  "true_label": "Heat Exhaustion",
+  "notes": "Nausea and weakness with no CNS involvement."
+ },
+ {
+  "id": "V031",
+  "symptom_text": "A delivery driver collapses after unloading a truck on a hot afternoon. Bystanders say he did not respond when they shouted, then opened his eyes but could not say where he was.",
+  "temperature_c": 41.9,
+  "temperature_source": "tympanic",
+  "true_cns": 1,
+  "true_heat_symptoms": 0,
+  "true_label": "Heat Stroke",
+  "notes": "Loss of consciousness followed by disorientation."
+ },
+ {
+  "id": "V032",
+  "symptom_text": "A cheerleader at an outdoor pep rally in full uniform complains that she is dizzy and has painful cramps in her abdomen. She is sweating, is alert, and answers questions about the routine without trouble.",
+  "temperature_c": 39.4,
+  "temperature_source": "forehead",
+  "true_cns": 0,
+  "true_heat_symptoms": 1,
+  "true_label": "Heat Exhaustion",
+  "notes": "Heat symptoms and cramping, no CNS signs; forehead reading is imprecise but not near the threshold."
+ },
+ {
+  "id": "V033",
+  "symptom_text": "A hiker's friend says he has been very quiet for the past hour and is walking much slower than usual. When asked how he feels he says, \"Fine, I'm just tired,\" and answers questions about the route correctly.",
+  "temperature_c": 38.1,
+  "temperature_source": "oral",
+  "true_cns": 0,
+  "true_heat_symptoms": 1,
+  "true_label": "Heat Exhaustion",
+  "notes": "Fatigue is a listed heat symptom; no CNS signs are present. Tests whether a vague report is read correctly."
+ },
+ {
+  "id": "V034",
+  "symptom_text": "A lacrosse player collapses in the third quarter, is carried off by teammates, and when the trainer arrives he is combative and keeps trying to stand up, shouting that he has to get back in the game.",
+  "temperature_c": 41.1,
+  "temperature_source": "rectal",
+  "true_cns": 1,
+  "true_heat_symptoms": 0,
+  "true_label": "Heat Stroke",
+  "notes": "Combative, irrational behavior with a rectal temperature above 40.5°C."
+ },
+ {
+  "id": "V035",
+  "symptom_text": "A warehouse employee reports that it is very hot on the loading dock, but he feels fine. He has no complaints, is moving normally, and is talking with coworkers on his break.",
+  "temperature_c": 37.0,
+  "temperature_source": "oral",
+  "true_cns": 0,
+  "true_heat_symptoms": 0,
+  "true_label": "Not Heat Illness — no thermal stress indicated",
+  "notes": "Hot environment alone, with no symptoms and normal temperature."
+ },
+ {
+  "id": "V036",
+  "symptom_text": "A tennis player late in a three-set match says she feels weak and a little nauseated. She sits down, takes sips of water, and clearly describes the score and who serves next.",
+  "temperature_c": 40.5,
+  "temperature_source": "rectal",
+  "true_cns": 0,
+  "true_heat_symptoms": 1,
+  "true_label": "Heat Exhaustion",
+  "notes": "Boundary case: a temperature of exactly 40.5°C is not above the threshold, so with heat symptoms and no CNS signs this is heat exhaustion."
+ },
+ {
+  "id": "V037",
+  "symptom_text": "A bus driver at a youth camp says he feels light-headed and \"shaky\" after standing in the parking lot for two hours. He is sweating, speaks clearly, and knows the camp schedule.",
+  "temperature_c": 39.0,
+  "temperature_source": "oral",
+  "true_cns": 0,
+  "true_heat_symptoms": 1,
+  "true_label": "Heat Exhaustion",
+  "notes": "Heat symptoms in a non-athlete adult."
+ },
+ {
+  "id": "V038",
+  "symptom_text": "A water polo coach reports that one of his players seems unusually quiet. The player says he slept badly and has a sore throat, is coughing, and has no other complaints. He answers questions normally.",
+  "temperature_c": 37.8,
+  "temperature_source": "oral",
+  "true_cns": 0,
+  "true_heat_symptoms": 0,
+  "true_label": "Not Heat Illness — no thermal stress indicated",
+  "notes": "Symptoms point to a mild illness rather than heat illness; temperature is only slightly raised and there is no thermal stress."
+ },
+ {
+  "id": "V039",
+  "symptom_text": "A football player at a summer camp is dizzy, sweating heavily, and says his legs feel weak. He is alert, can recite the plays from that morning's practice, and jokes with the trainer.",
+  "temperature_c": 40.6,
+  "temperature_source": "rectal",
+  "true_cns": 0,
+  "true_heat_symptoms": 1,
+  "true_label": "Uncertain — flag for review",
+  "notes": "Boundary case: 40.6°C is just above the threshold with no CNS signs, so the rule flags the case for review."
+ },
+ {
+  "id": "V040",
+  "symptom_text": "A teacher chaperoning an outdoor field day sits down suddenly and says everything feels \"fuzzy.\" She cannot recall what grade she is supervising and repeats the same question twice.",
+  "temperature_c": 39.7,
+  "temperature_source": "oral",
+  "true_cns": 1,
+  "true_heat_symptoms": 0,
+  "true_label": "Heat Stroke",
+  "notes": "Confusion and repeated questions; temperature is below threshold but CNS dysfunction decides the label."
+ },
+ {
+  "id": "V041",
+  "symptom_text": "A cyclist rides for three hours in 95°F heat and stops at a rest area feeling nauseated, with cramps in both thighs. He talks normally, recognizes his riding partners, and is drinking fluids.",
+  "temperature_c": 39.3,
+  "temperature_source": "tympanic",
+  "true_cns": 0,
+  "true_heat_symptoms": 1,
+  "true_label": "Heat Exhaustion",
+  "notes": "Heat symptoms and cramps with no CNS involvement."
+ },
+ {
+  "id": "V042",
+  "symptom_text": "A construction worker is found sitting on the ground, soaked in sweat, saying he feels extremely weak. He gives his name and address correctly and knows what day it is.",
+  "temperature_c": 41.0,
+  "temperature_source": "tympanic",
+  "true_cns": 0,
+  "true_heat_symptoms": 1,
+  "true_label": "Uncertain — flag for review",
+  "notes": "Temperature above 40.5°C with no CNS signs: flagged for review, since a tympanic reading may not match a rectal reading."
+ },
+ {
+  "id": "V043",
+  "symptom_text": "A band member in a marching rehearsal faints for a few seconds when the group stops, and then wakes up on the grass. Within a minute she is sitting up, answers every question correctly, and says she stood up too fast.",
+  "temperature_c": 37.9,
+  "temperature_source": "oral",
+  "true_cns": 0,
+  "true_heat_symptoms": 0,
+  "true_label": "Not Heat Illness — no thermal stress indicated",
+  "notes": "Brief faint after standing still, quickly resolved, normal orientation, no heat symptoms stated, near-normal temperature."
+ },
+ {
+  "id": "V044",
+  "symptom_text": "A baseball catcher at a doubleheader in July is sweating heavily and tells the coach he feels sick to his stomach. When asked what inning it is, he gives the correct inning and the score.",
+  "temperature_c": 38.6,
+  "temperature_source": "oral",
+  "true_cns": 0,
+  "true_heat_symptoms": 1,
+  "true_label": "Heat Exhaustion",
+  "notes": "Heat symptoms with correct orientation."
+ },
+ {
+  "id": "V045",
+  "symptom_text": "A trail runner is found by another runner stumbling off the path. He says he \"can't remember how I got here\" and cannot say what race he is in. He is hot to the touch.",
+  "temperature_c": 40.8,
+  "temperature_source": "rectal",
+  "true_cns": 1,
+  "true_heat_symptoms": 0,
+  "true_label": "Heat Stroke",
+  "notes": "Memory loss and disorientation with a rectal temperature above 40.5°C."
+ },
+ {
+  "id": "V046",
+  "symptom_text": "A park ranger in a hot canyon feels very tired and weak after a long hike and says she needs to rest. She is alert, correctly describes the trail, and has clear speech.",
+  "temperature_c": 41.2,
+  "temperature_source": "forehead",
+  "true_cns": 0,
+  "true_heat_symptoms": 1,
+  "true_label": "Uncertain — flag for review",
+  "notes": "Forehead temperature above 40.5°C with no CNS signs: flagged for review because forehead readings are imprecise and may not reflect core temperature."
+ },
+ {
+  "id": "V047",
+  "symptom_text": "A middle school soccer player says he feels fine but hot, and wants to keep playing. He has no dizziness, nausea, or cramps, is not sweating more than his teammates, and talks normally.",
+  "temperature_c": 37.6,
+  "temperature_source": "oral",
+  "true_cns": 0,
+  "true_heat_symptoms": 0,
+  "true_label": "Not Heat Illness — no thermal stress indicated",
+  "notes": "No symptoms and normal temperature."
+ },
+ {
+  "id": "V048",
+  "symptom_text": "A shift worker at a steel plant starts to speak in short broken sentences, cannot name his supervisor, and begins taking off his shirt and hard hat and walking toward an exit.",
+  "temperature_c": 40.4,
+  "temperature_source": "tympanic",
+  "true_cns": 1,
+  "true_heat_symptoms": 0,
+  "true_label": "Heat Stroke",
+  "notes": "Irrational behavior and inability to answer simple questions; CNS dysfunction decides the label even though the reading is below 40.5°C."
+ },
+ {
+  "id": "V049",
+  "symptom_text": "A softball pitcher says she feels dizzy and has a headache after the third inning. She sits in the shade, drinks water, and identifies where she is and what day it is without hesitation.",
+  "temperature_c": 39.2,
+  "temperature_source": "forehead",
+  "true_cns": 0,
+  "true_heat_symptoms": 1,
+  "true_label": "Heat Exhaustion",
+  "notes": "Dizziness and headache with no CNS signs."
+ },
+ {
+  "id": "V050",
+  "symptom_text": "A rower finishes a race on a hot morning and tells the coxswain that he feels a little stiff and sore. He is breathing normally, answers questions clearly, and has no complaints of dizziness, nausea, or cramping.",
+  "temperature_c": 37.4,
+  "temperature_source": "oral",
+  "true_cns": 0,
+  "true_heat_symptoms": 0,
+  "true_label": "Not Heat Illness — no thermal stress indicated",
+  "notes": "Muscle soreness alone, normal temperature, no heat symptoms."
+ }
+]

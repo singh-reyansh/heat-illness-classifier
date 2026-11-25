@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Heat Illness Classifier</title>
+<style>
+  :root {
+    --surface: #f2f4f8;
+    --card: #ffffff;
+    --ink-primary: #10151f;
+    --ink-secondary: #52514e;
+    --ink-muted: #8b8f9b;
+    --border: #e4e6ee;
+
+    --blue: #0072ff;
+    --blue-dark: #0057c7;
+    --violet: #7c3aed;
+    --cyan: #00d9ff;
+    --cyan-dim: #00b8d4;
+
+    --good: #0ca30c;
+    --good-bg: #eaf8ea;
+    --warning: #fab219;
+    --warning-bg: #fff6e0;
+    --serious: #ec835a;
+    --serious-bg: #fdece3;
+    --critical: #d03b3b;
+    --critical-bg: #fbeaea;
+
+    --mono: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body { height: 100%; }
+
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: linear-gradient(160deg, #05070f 0%, #0b1024 55%, #140b30 100%);
+    color: var(--ink-primary);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  #bgCanvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    display: block;
+  }
+
+  .hero, .wrap { position: relative; z-index: 1; }
+
+  .stat-banner {
+    position: relative; z-index: 2;
+    background: linear-gradient(90deg, #7a1515 0%, #a3330f 100%);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 10px 18px;
+  }
+  .stat-banner-inner {
+    max-width: 760px; margin: 0 auto;
+    display: flex; align-items: center; gap: 10px;
+    color: #fff;
+  }
+  .stat-banner-inner svg { width: 20px; height: 20px; flex-shrink: 0; color: #ffd9c2; }
+  .stat-banner-text { font-size: 13px; line-height: 1.45; }
+  .stat-banner-text strong { color: #ffd9c2; }
+  .stat-banner-source {
+    display: block; font-size: 10.5px; margin-top: 2px;
+    color: rgba(255,255,255,0.65);
+  }
+
+  .flash-overlay {
+    position: fixed; inset: 0; z-index: 9999;
+    pointer-events: none;
+    background: #d03b3b;
+    opacity: 0;
+  }
+  .flash-overlay.flashing { animation: dangerFlash 2.6s ease-in-out; }
+  @keyframes dangerFlash {
+    0%   { opacity: 0; }
+    14%  { opacity: 0.3; }
+    32%  { opacity: 0; }
+    46%  { opacity: 0.3; }
+    64%  { opacity: 0; }
+    100% { opacity: 0; }
+  }
+
+  .hero {
+    padding: 52px 20px 96px;
+    color: #fff;
+    text-align: center;
+  }
+  .cube-scene {
+    position: relative;
+    width: 64px; height: 64px;
+    margin: 0 auto 18px;
+    perspective: 700px;
+  }
+  .cube-glow {
+    position: absolute; inset: -22px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,217,255,0.4) 0%, rgba(124,58,237,0.15) 55%, transparent 75%);
+    filter: blur(10px);
+    animation: pulseGlow 2.6s ease-in-out infinite;
+  }
+  @keyframes pulseGlow {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.12); }
+  }
+  .cube {
+    position: relative;
+    width: 100%; height: 100%;
+    transform-style: preserve-3d;
+    animation: cubeSpin 9s linear infinite;
+  }
+  @keyframes cubeSpin {
+    from { transform: rotateX(0deg) rotateY(0deg); }
+    to   { transform: rotateX(360deg) rotateY(360deg); }
+  }
+  .cube-face {
+    position: absolute;
+    width: 64px; height: 64px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--violet) 100%);
+    border: 1px solid rgba(255,255,255,0.28);
+    box-shadow: inset 0 0 18px rgba(255,255,255,0.12);
+    opacity: 0.94;
+  }
+  .cube-face.front  { transform: translateZ(32px); }
+  .cube-face.back   { transform: rotateY(180deg) translateZ(32px); }
+  .cube-face.right  { transform: rotateY(90deg) translateZ(32px); }
+  .cube-face.left   { transform: rotateY(-90deg) translateZ(32px); }
+  .cube-face.top    { transform: rotateX(90deg) translateZ(32px); }
+  .cube-face.bottom { transform: rotateX(-90deg) translateZ(32px); }
+
+  .cube-face .icon-danger { display: none; }
+  .cube.danger-mode .cube-face .icon-normal { display: none; }
+  .cube.danger-mode .cube-face .icon-danger { display: flex; }
+  .cube.danger-mode .cube-face {
+    background: linear-gradient(135deg, #ff3b3b 0%, #ff8a00 100%);
+    box-shadow: inset 0 0 18px rgba(255,255,255,0.25), 0 0 22px rgba(255,59,59,0.6);
+    animation: dangerPulse 0.9s ease-in-out infinite;
+  }
+  @keyframes dangerPulse { 0%, 100% { filter: brightness(1); } 50% { filter: brightness(1.22); } }
+  .cube-glow.danger-glow {
+    background: radial-gradient(circle, rgba(255,59,59,0.55) 0%, rgba(255,138,0,0.25) 55%, transparent 75%);
+  }
+  .live-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--mono);
+    font-size: 11px; font-weight: 600; letter-spacing: 0.03em;
+    color: var(--cyan);
+    background: rgba(0,217,255,0.1);
+    border: 1px solid rgba(0,217,255,0.28);
+    padding: 4px 11px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+  }
+  .live-badge .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 8px var(--cyan);
+    animation: blink 1.6s ease-in-out infinite;
+  }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+  .hero h1 {
+    margin: 0 0 8px; font-size: 27px; font-weight: 800; letter-spacing: -0.01em;
+    background: linear-gradient(90deg, #ffffff 0%, #cfe8ff 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero p { margin: 0 auto; max-width: 540px; font-size: 14.5px; color: rgba(255,255,255,0.78); line-height: 1.55; }
+
+  .wrap { max-width: 700px; margin: -66px auto 60px; padding: 0 18px; }
+
+  .card {
+    background: var(--card);
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.04), 0 0 60px rgba(0,150,255,0.08);
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: "";
+    position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--blue), var(--cyan), var(--violet));
+  }
+
+  .field { margin-bottom: 20px; }
+  .field:last-of-type { margin-bottom: 0; }
+  label {
+    display: flex; align-items: baseline; gap: 6px;
+    font-weight: 700; font-size: 13.5px; margin-bottom: 8px;
+    color: var(--ink-primary);
+  }
+  .optional-tag {
+    font-weight: 500; font-size: 11.5px; color: var(--ink-muted);
+    background: var(--surface); padding: 2px 8px; border-radius: 999px;
+  }
+  textarea, input[type="number"], input[type="password"], select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-size: 14.5px;
+    font-family: inherit;
+    background: #fbfcfe;
+    color: var(--ink-primary);
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  textarea::placeholder { color: var(--ink-muted); }
+  textarea:focus, input:focus, select:focus {
+    outline: none;
+    border-color: var(--cyan-dim);
+    box-shadow: 0 0 0 4px rgba(0,217,255,0.14);
+    background: #fff;
+  }
+  textarea { resize: vertical; min-height: 64px; line-height: 1.5; }
+  .demo-row label { font-weight: 600; font-size: 13px; cursor: pointer; align-items: center; margin-bottom: 0; }
+  .demo-row input[type="checkbox"] { width: 16px; height: 16px; margin: 0; }
+  .demo-row .hint { font-weight: 500; color: var(--ink-muted); font-size: 12px; }
+  .caveat-panel {
+    margin: 14px 0 0; padding: 12px 14px; border-radius: 10px;
+    background: #fff8e6; border-left: 4px solid #d9a400; font-size: 13px; line-height: 1.5; color: #4a3b00;
+  }
+  .caveat-panel .cv-title { font-weight: 700; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 6px; }
+  .caveat-panel ul { margin: 0; padding-left: 18px; }
+  .caveat-panel li { margin-bottom: 6px; }
+  .caveat-panel li:last-child { margin-bottom: 0; }
+
+  select#tempSource {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2352514e' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'><path d='m6 9 6 6 6-6'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 15px;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+
+  .temp-row { display: flex; align-items: center; gap: 12px; max-width: 260px; }
+  .temp-row input { text-align: center; }
+  .unit-toggle { display: flex; border: 1.5px solid var(--border); border-radius: 10px; overflow: hidden; flex-shrink: 0; }
+  .unit-btn {
+    border: none; background: #fbfcfe; color: var(--ink-secondary);
+    font-weight: 700; font-size: 13px; font-family: inherit;
+    padding: 11px 14px; cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .unit-btn + .unit-btn { border-left: 1.5px solid var(--border); }
+  .unit-btn.active { background: linear-gradient(135deg, var(--blue), var(--violet)); color: #fff; }
+  .unit-btn:not(.active):hover { background: var(--surface); }
+
+  button#classifyBtn {
+    width: 100%;
+    margin-top: 26px;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--violet) 100%);
+    color: #fff;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 15.5px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 9px;
+    box-shadow: 0 8px 22px rgba(0,114,255,0.35);
+    transition: transform 0.12s, box-shadow 0.12s, filter 0.12s;
+  }
+  button#classifyBtn:hover:not(:disabled) { transform: translateY(-1px); filter: brightness(1.08); box-shadow: 0 10px 28px rgba(124,58,237,0.4); }
+  button#classifyBtn:active:not(:disabled) { transform: translateY(0); }
+  button#classifyBtn:disabled { opacity: 0.65; cursor: not-allowed; box-shadow: none; }
+
+  .spinner {
+    width: 16px; height: 16px;
+    border: 2.5px solid rgba(255,255,255,0.4);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  #result { margin-top: 24px; }
+  .fade-in { animation: fadeIn 0.35s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+  .status-pill {
+    display: flex; align-items: center; gap: 12px;
+    border-radius: 14px;
+    padding: 16px 18px;
+    font-weight: 800;
+    font-size: 17px;
+  }
+  .status-pill .icon { flex-shrink: 0; width: 30px; height: 30px; }
+  .status-pill .sub { display: block; font-weight: 500; font-size: 12.5px; margin-top: 2px; opacity: 0.85; }
+
+  .truth-check {
+    margin-top: 10px;
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 700;
+    padding: 10px 14px;
+    border-radius: 10px;
+  }
+  .truth-check svg { width: 16px; height: 16px; flex-shrink: 0; }
+  .truth-check.match { background: var(--good-bg); color: var(--good); }
+  .truth-check.mismatch { background: var(--serious-bg); color: #b5551f; }
+
+  .reading-meta {
+    margin-top: 10px;
+    font-size: 12.5px;
+    color: var(--ink-muted);
+    display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+  }
+  .reading-meta svg { width: 14px; height: 14px; flex-shrink: 0; }
+  .reading-meta strong { color: var(--ink-secondary); font-weight: 700; }
+
+  .guideline-panel {
+    margin-top: 14px;
+    border: 1.5px solid rgba(0,150,255,0.22);
+    background: linear-gradient(135deg, rgba(0,114,255,0.05), rgba(124,58,237,0.06));
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+
+  .action-panel {
+    margin-top: 14px;
+    border: 1.5px solid rgba(208,59,59,0.3);
+    background: linear-gradient(135deg, rgba(208,59,59,0.06), rgba(236,131,90,0.06));
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+  .action-panel.severity-moderate { border-color: rgba(250,178,25,0.35); background: linear-gradient(135deg, rgba(250,178,25,0.08), rgba(236,131,90,0.05)); }
+  .action-panel.severity-low { border-color: rgba(12,163,12,0.3); background: linear-gradient(135deg, rgba(12,163,12,0.06), rgba(12,163,12,0.03)); }
+  .action-panel .ap-title {
+    display: flex; align-items: center; gap: 7px;
+    font-weight: 800; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--critical);
+    margin-bottom: 9px;
+  }
+  .action-panel.severity-moderate .ap-title { color: #a3760c; }
+  .action-panel.severity-low .ap-title { color: var(--good); }
+  .action-panel .ap-title svg { width: 15px; height: 15px; flex-shrink: 0; }
+  .action-panel ul { margin: 0; padding-left: 20px; }
+  .action-panel li { font-size: 13.5px; line-height: 1.55; color: var(--ink-secondary); margin-bottom: 6px; }
+  .action-panel li:last-child { margin-bottom: 0; }
+  .action-panel li strong { color: var(--ink-primary); }
+  .action-panel .ap-disclaimer {
+    margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(0,0,0,0.08);
+    font-size: 11.5px; color: var(--ink-muted); font-style: italic;
+  }
+  .guideline-panel .gp-title {
+    display: flex; align-items: center; gap: 7px;
+    font-weight: 800; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--blue-dark);
+    margin-bottom: 7px;
+  }
+  .guideline-panel .gp-title svg { width: 15px; height: 15px; color: var(--violet); flex-shrink: 0; }
+  .guideline-panel p { margin: 0; font-size: 13.5px; line-height: 1.58; color: var(--ink-secondary); }
+
+  .flags { margin-top: 14px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .flag-card {
+    flex: 1; min-width: 220px;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    background: #fbfcfe;
+  }
+  .flag-card .top { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .flag-card .top svg { width: 17px; height: 17px; flex-shrink: 0; }
+  .flag-card .label { font-size: 11.5px; color: var(--ink-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+  .flag-card .value { font-size: 14.5px; font-weight: 700; margin: 0 0 4px; }
+  .flag-card .reason { font-size: 13px; color: var(--ink-secondary); margin: 0; line-height: 1.4; }
+
+  .error-box {
+    display: flex; gap: 10px; align-items: flex-start;
+    border: 1.5px solid var(--critical);
+    background: var(--critical-bg);
+    color: #8a2424;
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+  .error-box svg { flex-shrink: 0; width: 18px; height: 18px; margin-top: 1px; }
+
+  .loading-row { display: flex; align-items: center; gap: 10px; color: var(--ink-secondary); font-size: 14px; padding: 6px 2px; }
+  .loading-row .spinner { border-color: rgba(0,114,255,0.25); border-top-color: var(--blue); }
+
+  /* --- Vignette test section --- */
+  .vignette-section {
+    max-width: 700px;
+    margin: 22px auto 60px;
+    padding: 0 18px;
+  }
+  .vignette-card-outer {
+    background: var(--card);
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.04);
+    padding: 28px 28px 24px;
+  }
+  .vignette-title-row { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+  .vignette-title-row svg { width: 20px; height: 20px; color: var(--violet); flex-shrink: 0; }
+  .vignette-title-row h2 { margin: 0; font-size: 17px; font-weight: 800; }
+  .vignette-sub { margin: 0 0 18px; font-size: 13px; color: var(--ink-secondary); line-height: 1.5; }
+
+  .vignette-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 11px;
+    max-height: 380px;
+    overflow-y: auto;
+    padding-right: 6px;
+    margin-right: -6px;
+  }
+  .vignette-grid::-webkit-scrollbar { width: 8px; }
+  .vignette-grid::-webkit-scrollbar-track { background: transparent; }
+  .vignette-grid::-webkit-scrollbar-thumb { background: var(--border); border-radius: 8px; }
+
+  .vignette-card {
+    display: block;
+    width: 100%;
+    text-align: left;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 14px;
+    cursor: pointer;
+    background: #fbfcfe;
+    font-family: inherit;
+    transition: border-color 0.15s, transform 0.12s, box-shadow 0.15s;
+  }
+  .vignette-card:hover { border-color: var(--cyan-dim); transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0,0,0,0.08); }
+  .vignette-card:disabled { cursor: not-allowed; opacity: 0.55; transform: none; }
+  .vignette-card.active { border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(0,217,255,0.16); }
+
+  .vignette-card .vid-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 7px; }
+  .vignette-card .vid {
+    font-family: var(--mono); font-size: 11px; font-weight: 700; color: #fff;
+    background: linear-gradient(135deg, var(--blue), var(--violet));
+    padding: 2px 9px; border-radius: 6px; letter-spacing: 0.02em;
+  }
+  .vignette-card .temp-badge { font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--ink-muted); }
+  .vignette-card .snippet { font-size: 12.5px; color: var(--ink-secondary); line-height: 1.42; margin: 0; }
+
+  footer { text-align: center; margin-top: 26px; font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<div class="flash-overlay" id="flashOverlay"></div>
+
+<canvas id="bgCanvas"></canvas>
+
+<div class="stat-banner">
+  <div class="stat-banner-inner">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+    <div class="stat-banner-text">
+      <strong>~40%</strong> of U.S. weather-related deaths are caused by heat &mdash; more than hurricanes, tornadoes, and floods combined. The CDC recorded <strong>2,391</strong> heat-related deaths in the U.S. in 2024 alone.
+      <span class="stat-banner-source">Sources: CDC/NCHS QuickStats (2024); NOAA/NWS 30-year weather fatality average (1992&ndash;2021)</span>
+    </div>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="live-badge"><span class="dot"></span> LIVE &middot; <span id="liveBadgeModel">openai/gpt-oss-20b</span></div>
+  <div class="cube-scene">
+    <div class="cube-glow" id="cubeGlow"></div>
+    <div class="cube" id="cube">
+      <div class="cube-face front">
+        <span class="icon-normal">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/>
+          </svg>
+        </span>
+        <span class="icon-danger">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+        </span>
+      </div>
+      <div class="cube-face back"><span class="icon-danger"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span></div>
+      <div class="cube-face right"><span class="icon-danger"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span></div>
+      <div class="cube-face left"><span class="icon-danger"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span></div>
+      <div class="cube-face top"><span class="icon-danger"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span></div>
+      <div class="cube-face bottom"><span class="icon-danger"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span></div>
+    </div>
+  </div>
+  <h1>AI-Assisted Heat Illness Classifier</h1>
+  <p>Combines an LLM (detecting CNS dysfunction and heat symptoms from a written description) with a rule based on NATA/ACSM classification criteria.</p>
+</div>
+
+<div class="wrap">
+  <div class="card">
+
+    <div class="field">
+      <label for="context">What was the patient doing? <span class="optional-tag">optional context</span></label>
+      <textarea id="context" placeholder="e.g. Running wind sprints in full football pads outdoors at 2pm in August."></textarea>
+    </div>
+
+    <div class="field">
+      <label for="symptomText">Symptom description</label>
+      <textarea id="symptomText" placeholder="e.g. A runner is confused about what day it is and can't follow simple instructions, though she is still walking and talking."></textarea>
+    </div>
+
+    <div class="field">
+      <label for="temperature">Temperature</label>
+      <div class="temp-row">
+        <input type="number" id="temperature" step="0.1" value="38.0">
+        <div class="unit-toggle" role="group" aria-label="Temperature unit">
+          <button type="button" class="unit-btn active" id="unitCBtn" onclick="setTempUnit('C')">&deg;C</button>
+          <button type="button" class="unit-btn" id="unitFBtn" onclick="setTempUnit('F')">&deg;F</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="tempSource">How was the temperature taken? <span class="optional-tag">optional</span></label>
+      <select id="tempSource">
+        <option value="">Not specified</option>
+        <option value="oral">Oral (mouth)</option>
+        <option value="tympanic">Tympanic (ear)</option>
+        <option value="forehead">Forehead / temporal</option>
+        <option value="axillary">Axillary (armpit)</option>
+        <option value="rectal">Rectal</option>
+      </select>
+    </div>
+
+    <div class="field" id="keyField" style="display:none">
+      <label for="apiKeyInput">Groq API key <span class="optional-tag">kept in this tab only &middot; never saved</span></label>
+      <input type="password" id="apiKeyInput" placeholder="gsk_..." autocomplete="off">
+    </div>
+
+    <div class="field demo-row">
+      <label><input type="checkbox" id="demoMode"> Demo mode <span class="hint">&mdash; replay saved AI responses (no internet or API key needed)</span></label>
+    </div>
+
+    <button id="classifyBtn" onclick="classify()">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m3 3 18 9-18 9 4-9-4-9Z"/>
+      </svg>
+      Classify
+    </button>
+
+    <div id="result"></div>
+
+  </div>
+</div>
+
+<div class="vignette-section">
+  <div class="vignette-card-outer">
+    <div class="vignette-title-row">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      <h2>Want to test the model instead?</h2>
+    </div>
+    <p class="vignette-sub">Click any of the 20 scenarios from our evaluation set below. It'll auto-fill the form above and classify it instantly &mdash; including a check against the expected answer.</p>
+    <div class="vignette-grid" id="vignetteGrid"></div>
+  </div>
+</div>
+
+<footer style="max-width:700px; margin-left:auto; margin-right:auto; padding: 0 18px 10px;">
+  Model: <span id="footerModel">openai/gpt-oss-20b</span> via the Groq API &middot; Student science fair project, not a medical device &mdash; classifications are illustrative only.
+</footer>
+
+<script>
+// ---------------------------------------------------------------------------
+// Set once below -- you won't need to enter this anywhere else in the page.
+const GROQ_API_KEY = "PASTE_YOUR_GROQ_API_KEY_HERE";
+// ---------------------------------------------------------------------------
+
+const KEY_PLACEHOLDER = "PASTE_YOUR_GROQ_API_KEY_HERE";
+// Personal copy: the key above is used. Sharing copy: the key above is the
+// placeholder, so a box appears and the key is typed in each time (it lives
+// only in this tab's memory and is never written to the file or to storage).
+function getApiKey() {
+  if (GROQ_API_KEY && GROQ_API_KEY !== KEY_PLACEHOLDER) return GROQ_API_KEY;
+  return (document.getElementById("apiKeyInput").value || "").trim();
+}
+function demoModeOn() { return document.getElementById("demoMode").checked; }
+if (!GROQ_API_KEY || GROQ_API_KEY === KEY_PLACEHOLDER) {
+  document.getElementById("keyField").style.display = "";
+}
+
+// Demo mode: exact AI replies saved by full_classifier_groq.py and baked in by
+// build_demo_into_html.py. Keys are the full prompt text, so a demo reply is
+// only ever used for the exact same question it was recorded for.
+const DEMO_RESPONSES = /*DEMO_START*/{}/*DEMO_END*/;
+
+const API_URL = "https://api.groq.com/openai/v1/chat/completions";
+// Groq's model lineup has been shifting (old models get retired, docs lag
+// behind what a given account/key can actually use). Instead of hardcoding
+// one model and breaking again the next time Groq changes something, this
+// list is tried in order -- the first one that actually works for THIS key
+// is remembered (sessionActiveModelIndex) and reused for every later call.
+const MODEL_CANDIDATES = [
+  "openai/gpt-oss-20b",
+  "openai/gpt-oss-120b",
+  "llama-3.3-70b-versatile",
+  "llama-3.1-8b-instant",
+];
+let sessionActiveModelIndex = 0;
+
+function updateModelDisplay(modelName) {
+  const badge = document.getElementById("liveBadgeModel");
+  const footer = document.getElementById("footerModel");
+  if (badge) badge.textContent = modelName;
+  if (footer) footer.textContent = modelName;
+}
+
+// ---------------------------------------------------------------------------
+// Temperature unit toggle (°C / °F). Classification always runs in Celsius
+// internally (that's what the 40.5C threshold is defined in) -- the toggle
+// only changes what's displayed and typed into the field.
+// ---------------------------------------------------------------------------
+let tempUnit = "C";
+const cToF = (c) => c * 9 / 5 + 32;
+const fToC = (f) => (f - 32) * 5 / 9;
+
+function setTempUnit(unit) {
+  if (unit === tempUnit) return;
+  const input = document.getElementById("temperature");
+  const val = parseFloat(input.value);
+  if (!isNaN(val)) {
+    input.value = (unit === "F" ? cToF(val) : fToC(val)).toFixed(1);
+  }
+  tempUnit = unit;
+  document.getElementById("unitCBtn").classList.toggle("active", unit === "C");
+  document.getElementById("unitFBtn").classList.toggle("active", unit === "F");
+}
+
+// ---------------------------------------------------------------------------
+// The 20 vignettes from the project's evaluation set, embedded directly so
+// the "try a vignette" section works with no server and no extra file.
+// ---------------------------------------------------------------------------
+const VIGNETTES = [
+  { id: "V001", symptom_text: "A 16-year-old runner comes off the track heavily sweating, pale, and complaining of nausea and weakness. She is answering questions normally and knows where she is.", temperature_c: 38.6, temperature_source: "oral", true_label: "Heat Exhaustion" },
+  { id: "V002", symptom_text: "A construction worker is found slumped against a wall, unresponsive to his name, and does not react when someone shakes his shoulder.", temperature_c: 41.2, temperature_source: "tympanic", true_label: "Heat Stroke" },
+  { id: "V003", symptom_text: "A marching band member is confused about what day it is and can't follow simple instructions, though she is still walking and talking.", temperature_c: 40.0, temperature_source: "forehead", true_label: "Heat Stroke" },
+  { id: "V004", symptom_text: "A hiker reports feeling dizzy and having a headache but answers every question correctly and recognizes his hiking partner.", temperature_c: 40.3, temperature_source: "oral", true_label: "Heat Exhaustion" },
+  { id: "V005", symptom_text: "A football player is sweating heavily and looks exhausted after practice but is alert, oriented, and joking with teammates.", temperature_c: 41.0, temperature_source: "tympanic", true_label: "Uncertain — flag for review" },
+  { id: "V006", symptom_text: "A coworker says the patient 'seemed a little off' during the shift, gave a couple of one-word answers that didn't quite make sense, but otherwise seemed to be functioning normally.", temperature_c: 39.5, temperature_source: "oral", true_label: "Heat Stroke" },
+  { id: "V007", symptom_text: "A 23-year-old male was found unconscious in a construction building; minutes earlier he had been walking and behaving erratically and drinking excessive amounts of fluids.", temperature_c: 42.8, temperature_source: "tympanic", true_label: "Heat Stroke" },
+  { id: "V008", symptom_text: "A teammate says the athlete has been acting unusually irritable and argumentative for the last ten minutes, snapping at people over nothing.", temperature_c: 37.4, temperature_source: "oral", true_label: "Not Heat Illness — no thermal stress indicated" },
+  { id: "V009", symptom_text: "A softball player during a tournament complains of nausea, heavy sweating, and muscle cramps in her legs. She is talking normally and recognizes her coach.", temperature_c: 38.9, temperature_source: "oral", true_label: "Heat Exhaustion" },
+  { id: "V010", symptom_text: "A landscaper collapses on the job site and cannot be woken by shouting or shaking; coworkers say he had been working in direct sun for hours without breaks.", temperature_c: 42.6, temperature_source: "tympanic", true_label: "Heat Stroke" },
+  { id: "V011", symptom_text: "A hiker on a hot trail keeps stumbling and losing her balance on flat ground, even though she isn't complaining of any pain or dizziness.", temperature_c: 38.9, temperature_source: "forehead", true_label: "Heat Stroke" },
+  { id: "V012", symptom_text: "A tennis player is drenched in sweat and reports painful cramping in both calves, but is answering questions clearly and knows the score of the match.", temperature_c: 41.3, temperature_source: "tympanic", true_label: "Uncertain — flag for review" },
+  { id: "V013", symptom_text: "A student says he has a mild headache and just wants to sit down for a minute, but mentions he only slept four hours last night and skipped breakfast.", temperature_c: 37.1, temperature_source: "oral", true_label: "Not Heat Illness — no thermal stress indicated" },
+  { id: "V014", symptom_text: "A camper is coughing and has a runny nose during a midday hike, but otherwise feels fine and is walking at a normal pace.", temperature_c: 37.3, temperature_source: "oral", true_label: "Not Heat Illness — no thermal stress indicated" },
+  { id: "V015", symptom_text: "A soccer player reports feeling weak and 'not quite right' late in a match, and when asked what city they're in, gives the name of last week's away game instead.", temperature_c: 39.8, temperature_source: "oral", true_label: "Heat Stroke" },
+  { id: "V016", symptom_text: "A warehouse worker is sweating heavily, feels dizzy, and has to sit down, but is fully alert and correctly explains what shift he's on and who his supervisor is.", temperature_c: 39.2, temperature_source: "forehead", true_label: "Heat Exhaustion" },
+  { id: "V017", symptom_text: "A teammate mentions the runner 'walked off kind of funny' after finishing a 5K on a hot morning, but by the time medical staff reach her she is sitting up, drinking water, and chatting normally.", temperature_c: 38.5, temperature_source: "oral", true_label: "Not Heat Illness — no thermal stress indicated" },
+  { id: "V018", symptom_text: "A cyclist finishing a long ride in the heat is nauseated and fatigued, and mentions his vision 'went a little blurry' for a few seconds but has been fine since.", temperature_c: 40.4, temperature_source: "tympanic", true_label: "Heat Exhaustion" },
+  { id: "V019", symptom_text: "A referee walks off the field holding his head, says the sun is 'too loud today,' and then immediately apologizes and says he's not sure why he said that.", temperature_c: 39.6, temperature_source: "oral", true_label: "Heat Stroke" },
+  { id: "V020", symptom_text: "A gym teacher overhears two students say the kid doing suicides in the heat 'seems kinda out of it,' but when she checks on him directly, he answers all her questions immediately and correctly, just seems tired.", temperature_c: 41.6, temperature_source: "tympanic", true_label: "Uncertain — flag for review" },
+];
+
+const TEMP_SOURCE_LABELS = {
+  "": "not specified",
+  oral: "oral",
+  tympanic: "tympanic (ear)",
+  forehead: "forehead / temporal",
+  axillary: "axillary (armpit)",
+  rectal: "rectal",
+};
+
+// Third question, asked only when CNS signs were found AND a "what was the
+// patient doing" note was typed: does the note mention exertion or heat?
+function buildContextPrompt(context) {
+  return `You are assisting a heat-illness triage tool, not making a medical diagnosis. Based only on the note below about what the patient was doing beforehand, does it mention hard physical exertion or exposure to a hot environment?
+
+Note: ${context.trim()}
+
+Respond in exactly this format:
+Answer: 1 or 0
+Reason: one sentence`;
+}
+
+function buildPrompt(baseQuestion, symptomText, context) {
+  const contextLine = context
+    ? `\nAdditional context (what the patient was doing beforehand): ${context}\n`
+    : "";
+  return `You are assisting a heat-illness triage tool, not making a medical diagnosis. ${baseQuestion}
+
+Description: ${symptomText}
+${contextLine}
+Respond in exactly this format:
+Answer: 1 or 0
+Reason: one sentence`;
+}
+
+const cnsQuestion = "Based only on the description below, does it show signs of central nervous system (CNS) dysfunction — confusion or disorientation, loss of balance or coordination, irrational, irritable, or combative behavior, delirium, collapse or loss of consciousness, seizure, or coma? Dizziness or lightheadedness on its own is NOT a CNS sign (it is a heat symptom), but stumbling, being unable to walk straight, or not making sense IS a CNS sign.";
+const heatQuestion = "Based only on the description below, does it mention any heat-related symptom — heavy sweating, weakness, nausea, dizziness or lightheadedness, cramping, or fatigue? Do not count confusion, stumbling, loss of balance, or odd behavior here; those are CNS signs and are judged separately.";
+
+async function callLLM(prompt) {
+  if (demoModeOn()) {
+    if (Object.prototype.hasOwnProperty.call(DEMO_RESPONSES, prompt)) {
+      return DEMO_RESPONSES[prompt].reply;
+    }
+    throw new Error("Demo mode has no saved response for this exact case. Run full_classifier_groq.py with your key, then build_demo_into_html.py, to save responses for the 20 test vignettes.");
+  }
+  let lastError = null;
+
+  for (let i = sessionActiveModelIndex; i < MODEL_CANDIDATES.length; i++) {
+    const modelToTry = MODEL_CANDIDATES[i];
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${getApiKey()}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: modelToTry,
+        temperature: 0,
+        messages: [{ role: "user", content: prompt }],
+      }),
+    });
+
+    if (response.ok) {
+      if (i !== sessionActiveModelIndex || i === 0) {
+        sessionActiveModelIndex = i;
+        updateModelDisplay(modelToTry);
+      }
+      const data = await response.json();
+      if (data.model) updateModelDisplay(data.model);
+      return data.choices[0].message.content;
+    }
+
+    const bodyText = await response.text();
+    const modelMissing = response.status === 404 && /model_not_found|does not exist/i.test(bodyText);
+
+    if (modelMissing && i < MODEL_CANDIDATES.length - 1) {
+      // This model isn't available on this key/account -- quietly try the
+      // next candidate instead of failing the whole classification.
+      lastError = new Error(`API request failed (HTTP ${response.status}): ${bodyText}`);
+      continue;
+    }
+
+    throw new Error(`API request failed (HTTP ${response.status}): ${bodyText}`);
+  }
+
+  throw lastError || new Error("No working Groq model found for this API key.");
+}
+
+function parseResponse(responseText) {
+  const match = responseText.match(/Answer:\s*([01])/);
+  if (!match) {
+    throw new Error(`Could not parse LLM response:\n${responseText}`);
+  }
+  return parseInt(match[1], 10);
+}
+
+// Pulls out just the sentence after "Reason:" so the UI (flag cards,
+// guideline comparison, personalized action checklist) shows a clean
+// sentence instead of the model's full raw "Answer: 1\nReason: ..." text.
+function parseReason(responseText) {
+  const match = responseText.match(/Reason:\s*(.+)/is);
+  return match ? match[1].trim() : responseText.trim();
+}
+
+async function askBinaryQuestion(prompt, maxRetries = 2) {
+  let lastResponse = null;
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    const responseText = await callLLM(prompt);
+    lastResponse = responseText;
+    try {
+      return { flag: parseResponse(responseText), reason: parseReason(responseText) };
+    } catch (err) {
+      if (attempt < maxRetries) continue;
+    }
+  }
+  throw new Error(`Could not parse LLM response after ${maxRetries + 1} attempts:\n${lastResponse}`);
+}
+
+// The first branch (CNS dysfunction = Heat Stroke, regardless of temperature)
+// directly reflects NATA/ACSM guidance: confirmed CNS dysfunction is what
+// distinguishes heat stroke from heat exhaustion, not temperature alone. The
+// 40.5C threshold reflects the temperature level NATA/ACSM guidance
+// associates with heat stroke. The two-flag system and the "Not Heat
+// Illness" / "Uncertain" branches are this project's own additions.
+// ---- Decision rule: a line-for-line mirror of rule.py (check_parity.py verifies it) ----
+const TEMP_THRESHOLD_C = 40.5;
+
+// Round to 0.1 C, half-up, so exactly 40.5 C is NOT above the threshold and
+// 105.0 F (= 40.56 C -> 40.6 C) IS. Celsius is the official unit.
+function normalizeTempC(t) {
+  const r6 = Math.round(t * 1e6) / 1e6;
+  return Math.round((r6 + 1e-9) * 10) / 10;
+}
+function isAboveThreshold(t) { return normalizeTempC(t) > TEMP_THRESHOLD_C; }
+
+function applyRule(cnsFlag, heatFlag, temperatureC) {
+  if (cnsFlag === 1) return "Heat Stroke";
+  if (isAboveThreshold(temperatureC)) return "Uncertain — flag for review";
+  if (heatFlag === 1) return "Heat Exhaustion";
+  return "Not Heat Illness — no thermal stress indicated";
+}
+
+// Plain-language notes shown with a result. They never change the label.
+function buildCaveats(label, tempSource, cnsFlag, contextText, contextExposureFlag) {
+  const caveats = [];
+  const source = (tempSource || "").trim().toLowerCase();
+  if (source !== "rectal") {
+    const how = source === ""
+      ? "The temperature method was not specified."
+      : `The temperature was taken by a non-rectal method (${TEMP_SOURCE_LABELS[source] || source}).`;
+    if (label === "Heat Exhaustion" || label === "Not Heat Illness — no thermal stress indicated") {
+      caveats.push(`${how} NATA guidance says only a rectal temperature is valid after intense exercise in the heat, so this reading cannot rule out heat stroke. Get a rectal temperature if possible and keep watching for CNS signs.`);
+    } else if (label === "Uncertain — flag for review") {
+      caveats.push(`${how} Non-rectal readings usually read lower than core temperature, so the true value may be even higher. Get a rectal temperature and have a clinician review this case.`);
+    } else {
+      caveats.push(`${how} Non-rectal readings can under-read, so do not wait for a higher number before treating.`);
+    }
+  }
+  if (label === "Heat Stroke" && cnsFlag === 1) {
+    caveats.push("Classified as Heat Stroke from CNS signs alone, on purpose: when in doubt, treat as an emergency (cool first, transport second). The NATA definition uses both CNS dysfunction and a core temperature above 40.5 C; this tool does not wait for the temperature because field temperature readings are often unreliable.");
+    if ((contextText || "").trim() && contextExposureFlag === 0) {
+      caveats.push("The 'what was the patient doing' note does not mention exercise or heat exposure. Other causes of confusion (for example a concussion or low blood sugar) can look like this. Treat it as an emergency anyway.");
+    } else if (!(contextText || "").trim()) {
+      caveats.push("No heat or exercise context was given. This tool does not check for other causes of confusion (for example a concussion or low blood sugar); it is only meant for people who were exercising or exposed to heat.");
+    }
+  }
+  return caveats;
+}
+
+async function classifyHeatIllness(symptomText, temperatureC, context, tempSource) {
+  const cns = await askBinaryQuestion(buildPrompt(cnsQuestion, symptomText, context));
+  const heat = await askBinaryQuestion(buildPrompt(heatQuestion, symptomText, context));
+
+  let exposureFlag = null;
+  if (cns.flag === 1 && context) {
+    try { exposureFlag = (await askBinaryQuestion(buildContextPrompt(context))).flag; } catch (e) { exposureFlag = null; }
+  }
+
+  const label = applyRule(cns.flag, heat.flag, temperatureC);
+  const caveats = buildCaveats(label, tempSource || "", cns.flag, context || "", exposureFlag);
+  return { label, cnsFlag: cns.flag, cnsReason: cns.reason.trim(), heatFlag: heat.flag, heatReason: heat.reason.trim(), caveats };
+}
+
+const STATUS = {
+  "Heat Stroke": { color: "var(--critical)", bg: "var(--critical-bg)", sub: "Highest severity — CNS dysfunction confirmed" },
+  "Uncertain — flag for review": { color: "var(--serious)", bg: "var(--serious-bg)", sub: "Elevated temperature without confirmed CNS signs — needs human review" },
+  "Heat Exhaustion": { color: "#b8860a", bg: "var(--warning-bg)", sub: "Heat symptoms present, no CNS dysfunction" },
+  "Not Heat Illness — no thermal stress indicated": { color: "var(--good)", bg: "var(--good-bg)", sub: "No heat symptoms or CNS dysfunction detected" },
+};
+
+function iconFor(label) {
+  if (label === "Heat Stroke") {
+    return `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>`;
+  }
+  if (label === "Uncertain — flag for review") {
+    return `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v.01"/><path d="M12 8a2 2 0 0 1 2 2c0 1.5-2 1.5-2 3.5"/></svg>`;
+  }
+  if (label === "Heat Exhaustion") {
+    return `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></svg>`;
+  }
+  return `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>`;
+}
+
+// Builds a short explanation tying the specific result back to the
+// NATA/ACSM criteria the classify_heat_illness rule is based on, so the
+// comparison isn't just "trust the label" -- it shows the guideline logic
+// that produced it, using this case's own flags/reasons/reading.
+function guidelineNote(result, temperatureC, tempSourceLabel) {
+  const tempStr = `${temperatureC.toFixed(1)}&deg;C`;
+
+  if (result.label === "Heat Stroke") {
+    return `NATA/ACSM guidance treats confirmed CNS dysfunction &mdash; confusion, loss of balance, irrational behavior, or coma &mdash; as the criterion that overrides temperature when diagnosing exertional heat stroke, since accessible (non-rectal) temperature readings are frequently unreliable in the field. The model detected CNS dysfunction here (&ldquo;${result.cnsReason}&rdquo;), so this is classified <strong>Heat Stroke</strong> regardless of the ${tempStr} reading (${tempSourceLabel}).`;
+  }
+  if (result.label === "Uncertain — flag for review") {
+    return `The ${tempStr} reading is above the 40.5&deg;C level guidelines associate with heat stroke risk, but no CNS dysfunction was detected (&ldquo;${result.cnsReason}&rdquo;). NATA/ACSM guidance treats CNS dysfunction, not temperature alone, as the deciding factor &mdash; especially since this reading came from a ${tempSourceLabel} method rather than the rectal readings guidelines consider most reliable. That combination doesn't cleanly match either guideline-defined category, which is exactly why this rule flags it for a person to review instead of guessing.`;
+  }
+  if (result.label === "Heat Exhaustion") {
+    return `This matches the NATA/ACSM heat exhaustion profile: at least one heat-related symptom present (&ldquo;${result.heatReason}&rdquo;), no CNS dysfunction (&ldquo;${result.cnsReason}&rdquo;), and a ${tempStr} reading at or below the 40.5&deg;C heat-stroke threshold.`;
+  }
+  return `Neither guideline-recognized pattern is present: no CNS dysfunction (&ldquo;${result.cnsReason}&rdquo;) and no listed heat-related symptom (&ldquo;${result.heatReason}&rdquo;), so this case doesn't meet NATA/ACSM's criteria for either heat exhaustion or heat stroke.`;
+}
+
+// ---------------------------------------------------------------------------
+// Visual emergency cues: the cube swaps to a red/orange warning-triangle
+// treatment and the whole page pulses red twice over ~2.6s (slow, soft
+// opacity fades -- well under flashing-content safety thresholds, not a
+// rapid strobe) whenever a case is classified as Heat Stroke.
+// ---------------------------------------------------------------------------
+function setCubeDanger(isDanger) {
+  const cube = document.getElementById("cube");
+  const glow = document.getElementById("cubeGlow");
+  cube.classList.toggle("danger-mode", isDanger);
+  glow.classList.toggle("danger-glow", isDanger);
+}
+
+function triggerDangerFlash() {
+  const el = document.getElementById("flashOverlay");
+  el.classList.remove("flashing");
+  void el.offsetWidth; // restart the animation if it's already run once
+  el.classList.add("flashing");
+  setTimeout(() => el.classList.remove("flashing"), 2600);
+}
+
+// Builds a "what to do now" checklist. The core steps are the same for any
+// given label (drawn from standard NATA/ACSM emergency care guidance), but a
+// few lines are personalized using this specific case's own model reasoning
+// and temperature-reading method, so it isn't just generic advice.
+function actionChecklist(result, temperatureC, tempSourceLabel, tempSource) {
+  const cnsReason = (result.cnsReason || "").toLowerCase();
+  const nonRectal = tempSource && tempSource !== "rectal";
+
+  if (result.label === "Heat Stroke") {
+    const items = [
+      "Call 911 immediately &mdash; exertional heat stroke is a life-threatening medical emergency.",
+      "Begin aggressive whole-body cooling right away. Cold water immersion (a tub or tank of ice water) is the fastest and most effective method if one is available.",
+      "If immersion isn't possible, apply ice packs or cold, wet towels to the neck, armpits, and groin, and keep skin wet while fanning to speed evaporative cooling.",
+      "Do not give anything by mouth if the person shows confusion or altered consciousness &mdash; this is a choking risk.",
+      "Keep monitoring breathing and responsiveness continuously until emergency responders arrive.",
+    ];
+    if (cnsReason.includes("confus") || cnsReason.includes("irrational") || cnsReason.includes("coma") || cnsReason.includes("balance")) {
+      items.push(`Because the description specifically notes &ldquo;${result.cnsReason}&rdquo;, keep reassessing responsiveness and be ready to place the person in the recovery position if they vomit or lose consciousness.`);
+    }
+    if (nonRectal) {
+      items.push(`This reading came from a ${tempSourceLabel} method, which can underestimate true core temperature during heat stroke &mdash; don't wait for a higher number before treating this as an emergency.`);
+    }
+    return { severity: "high", title: "Do this now", items };
+  }
+
+  if (result.label === "Uncertain — flag for review") {
+    return {
+      severity: "moderate",
+      title: "Recommended next steps",
+      items: [
+        "NATA/ACSM guidance says that when a case doesn't cleanly match a category, treat it as the more severe condition until a trained professional says otherwise.",
+        "Begin basic cooling measures (shade, remove excess clothing, fan, cool water) as a precaution while arranging evaluation.",
+        `This reading used a ${tempSourceLabel} method; if possible, get an accurate core temperature (rectal, by trained personnel) to confirm.`,
+        "Get the person evaluated by a certified athletic trainer, EMS, or physician promptly &mdash; don't wait to see if symptoms resolve on their own.",
+      ],
+    };
+  }
+
+  if (result.label === "Heat Exhaustion") {
+    return {
+      severity: "moderate",
+      title: "Recommended next steps",
+      items: [
+        "Move to a cool or shaded area immediately and remove excess clothing or equipment.",
+        "Begin active cooling: fan the person and apply cool, wet cloths to the skin.",
+        "If the person is fully alert and not nauseated, give small sips of cool water.",
+        "Keep monitoring closely &mdash; if confusion, irrational behavior, or any CNS symptom appears, treat it as heat stroke and call 911 right away.",
+      ],
+    };
+  }
+
+  return {
+    severity: "low",
+    title: "Recommended next steps",
+    items: [
+      "No heat-illness indicators were detected from this description, but continue normal precautions: shade, hydration, and rest breaks in hot conditions.",
+      "This is a student research tool, not a diagnosis &mdash; if symptoms appear or the person's condition changes, re-evaluate and seek care.",
+    ],
+  };
+}
+
+function actionPanelHtml(action) {
+  const iconSvg = action.severity === "high"
+    ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>`
+    : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.4 8.4 8 9 4.6-.6 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>`;
+  const sevClass = action.severity === "moderate" ? " severity-moderate" : action.severity === "low" ? " severity-low" : "";
+  return `
+    <div class="action-panel${sevClass}">
+      <div class="ap-title">${iconSvg} ${action.title}</div>
+      <ul>${action.items.map((item) => `<li>${item}</li>`).join("")}</ul>
+      <div class="ap-disclaimer">This is a student science fair research tool, not a medical device. In a real emergency, always call 911.</div>
+    </div>`;
+}
+
+function caveatPanelHtml(caveats) {
+  if (!caveats || !caveats.length) return "";
+  const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return `<div class="caveat-panel"><div class="cv-title">Limits of this result</div><ul>${caveats.map((c) => `<li>${esc(c)}</li>`).join("")}</ul></div>`;
+}
+
+function flagIcon(isPositive) {
+  if (isPositive) {
+    return `<svg viewBox="0 0 24 24" fill="none" stroke="var(--critical)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>`;
+  }
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="var(--good)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>`;
+}
+
+async function classify(trueLabel) {
+  const context = document.getElementById("context").value.trim();
+  const symptomText = document.getElementById("symptomText").value.trim();
+  const temperatureRaw = parseFloat(document.getElementById("temperature").value);
+  const temperatureC = tempUnit === "F" ? fToC(temperatureRaw) : temperatureRaw;
+  const tempSource = document.getElementById("tempSource").value;
+  const resultDiv = document.getElementById("result");
+  const btn = document.getElementById("classifyBtn");
+
+  if (!demoModeOn() && !getApiKey()) {
+    resultDiv.innerHTML = `<div class="error-box fade-in">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+      <div>Type your Groq API key into the key box above (it stays in this tab only and is never saved), or turn on Demo mode to replay saved responses.</div>
+    </div>`;
+    return;
+  }
+  if (!symptomText) {
+    resultDiv.innerHTML = `<div class="error-box fade-in">Please enter a symptom description.</div>`;
+    return;
+  }
+  if (isNaN(temperatureC)) {
+    resultDiv.innerHTML = `<div class="error-box fade-in">Please enter a valid temperature.</div>`;
+    return;
+  }
+
+  btn.disabled = true;
+  setVignetteGridDisabled(true);
+  resultDiv.innerHTML = `<div class="loading-row fade-in"><span class="spinner"></span> Classifying...</div>`;
+
+  try {
+    const result = await classifyHeatIllness(symptomText, temperatureC, context, tempSource);
+    const status = STATUS[result.label];
+
+    let truthHtml = "";
+    if (trueLabel) {
+      const isMatch = result.label === trueLabel;
+      truthHtml = `
+        <div class="truth-check ${isMatch ? "match" : "mismatch"}">
+          ${isMatch
+            ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> Matches the expected label for this vignette.`
+            : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg> Model predicted differently &mdash; expected: <strong>${trueLabel}</strong>.`
+          }
+        </div>`;
+    }
+
+    const readingMetaHtml = `
+      <div class="reading-meta">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></svg>
+        Reading: <strong>${temperatureRaw}&deg;${tempUnit}</strong> (${normalizeTempC(temperatureC).toFixed(1)}&deg;C, rounded to 0.1) &middot; Method: <strong>${TEMP_SOURCE_LABELS[tempSource] || "not specified"}</strong>
+      </div>`;
+
+    const isHeatStroke = result.label === "Heat Stroke";
+    setCubeDanger(isHeatStroke);
+    if (isHeatStroke) triggerDangerFlash();
+
+    const action = actionChecklist(result, temperatureC, TEMP_SOURCE_LABELS[tempSource] || "not specified", tempSource);
+
+    resultDiv.innerHTML = `
+      <div class="fade-in">
+        <div class="status-pill" style="background:${status.bg}; color:${status.color};">
+          ${iconFor(result.label)}
+          <span>${result.label}<span class="sub">${status.sub}</span></span>
+        </div>
+        ${truthHtml}
+        ${readingMetaHtml}
+        ${actionPanelHtml(action)}
+        ${caveatPanelHtml(result.caveats)}
+        <div class="flags">
+          <div class="flag-card">
+            <div class="top">${flagIcon(result.cnsFlag === 1)}<span class="label">CNS dysfunction</span></div>
+            <p class="value">${result.cnsFlag ? "Detected" : "Not detected"}</p>
+            <p class="reason">${result.cnsReason}</p>
+          </div>
+          <div class="flag-card">
+            <div class="top">${flagIcon(result.heatFlag === 1)}<span class="label">Heat symptoms</span></div>
+            <p class="value">${result.heatFlag ? "Detected" : "Not detected"}</p>
+            <p class="reason">${result.heatReason}</p>
+          </div>
+        </div>
+        <div class="guideline-panel">
+          <div class="gp-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.4 8.4 8 9 4.6-.6 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+            NATA/ACSM guideline comparison
+          </div>
+          <p>${guidelineNote(result, temperatureC, TEMP_SOURCE_LABELS[tempSource] || "not specified")}</p>
+        </div>
+      </div>
+    `;
+  } catch (err) {
+    resultDiv.innerHTML = `<div class="error-box fade-in">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+      <div>Something went wrong: ${err.message}</div>
+    </div>`;
+  } finally {
+    btn.disabled = false;
+    setVignetteGridDisabled(false);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Vignette picker: renders the 20 cards and, on click, fills the form above
+// and runs classification automatically, then compares the result to the
+// vignette's expected label.
+// ---------------------------------------------------------------------------
+function setVignetteGridDisabled(disabled) {
+  document.querySelectorAll(".vignette-card").forEach((el) => { el.disabled = disabled; });
+}
+
+function renderVignetteGrid() {
+  const grid = document.getElementById("vignetteGrid");
+  grid.innerHTML = VIGNETTES.map((v, i) => `
+    <button class="vignette-card" id="vcard-${i}" onclick="runVignette(${i})">
+      <div class="vid-row">
+        <span class="vid">${v.id}</span>
+        <span class="temp-badge">${v.temperature_c.toFixed(1)}&deg;C &middot; ${TEMP_SOURCE_LABELS[v.temperature_source] || "n/a"}</span>
+      </div>
+      <p class="snippet">${v.symptom_text.length > 110 ? v.symptom_text.slice(0, 110) + "…" : v.symptom_text}</p>
+    </button>
+  `).join("");
+}
+
+async function runVignette(index) {
+  const v = VIGNETTES[index];
+
+  document.querySelectorAll(".vignette-card").forEach((el) => el.classList.remove("active"));
+  const cardEl = document.getElementById(`vcard-${index}`);
+  if (cardEl) cardEl.classList.add("active");
+
+  document.getElementById("context").value = "";
+  document.getElementById("symptomText").value = v.symptom_text;
+  document.getElementById("temperature").value = (tempUnit === "F" ? cToF(v.temperature_c) : v.temperature_c).toFixed(1);
+  document.getElementById("tempSource").value = v.temperature_source || "";
+
+  document.querySelector(".card").scrollIntoView({ behavior: "smooth", block: "start" });
+
+  await classify(v.true_label);
+}
+
+renderVignetteGrid();
+
+// ---------------------------------------------------------------------------
+// Background canvas: a real 3D starfield (perspective-projected points
+// streaking toward the viewer), for a "flying through space" high-tech
+// feel. Purely decorative, sits behind everything, never intercepts clicks.
+// ---------------------------------------------------------------------------
+(function initBackground() {
+  const canvas = document.getElementById("bgCanvas");
+  const ctx = canvas.getContext("2d");
+  let width, height, cx, cy, stars;
+  const STAR_COUNT = 260;
+  const SPEED = 2.4;
+  const FOV = 300;
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+    cx = width / 2;
+    cy = height / 2;
+  }
+
+  // A star sits in 3D space (x, y, z) centered on the viewer. z shrinks every
+  // frame (the star moves toward the camera); x/z and y/z is the classic
+  // perspective projection back onto the 2D screen.
+  function newStar() {
+    return {
+      x: (Math.random() - 0.5) * width * 1.6,
+      y: (Math.random() - 0.5) * height * 1.6,
+      z: width,
+    };
+  }
+
+  function makeStars() {
+    stars = Array.from({ length: STAR_COUNT }, () => {
+      const s = newStar();
+      s.z = Math.random() * width + 40;
+      return s;
+    });
+  }
+
+  function project(s) {
+    return { sx: cx + (s.x / s.z) * FOV, sy: cy + (s.y / s.z) * FOV };
+  }
+
+  function step() {
+    ctx.clearRect(0, 0, width, height);
+
+    for (const s of stars) {
+      const before = project(s);
+      s.z -= SPEED;
+      if (s.z <= 1) {
+        Object.assign(s, newStar());
+        continue;
+      }
+      const after = project(s);
+
+      const depth = 1 - s.z / width;
+      const size = Math.max(0.4, depth * 2.6);
+      const opacity = Math.min(1, Math.max(0, depth)) * 0.9;
+
+      ctx.strokeStyle = `rgba(140, 205, 255, ${opacity})`;
+      ctx.lineWidth = size;
+      ctx.beginPath();
+      ctx.moveTo(before.sx, before.sy);
+      ctx.lineTo(after.sx, after.sy);
+      ctx.stroke();
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  function staticFrame() {
+    ctx.clearRect(0, 0, width, height);
+    for (const s of stars) {
+      const { sx, sy } = project(s);
+      const depth = 1 - s.z / width;
+      ctx.beginPath();
+      ctx.arc(sx, sy, Math.max(0.6, depth * 1.8), 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(140, 205, 255, ${Math.max(0.15, depth * 0.7)})`;
+      ctx.fill();
+    }
+  }
+
+  const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  window.addEventListener("resize", () => { resize(); makeStars(); if (reduceMotion) staticFrame(); });
+  resize();
+  makeStars();
+  if (!reduceMotion) {
+    requestAnimationFrame(step);
+  } else {
+    staticFrame();
+  }
+})();
+</script>
+
+</body>
+</html>

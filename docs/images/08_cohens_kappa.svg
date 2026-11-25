@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="Segoe UI, Arial, Helvetica, sans-serif">
+<title>Cohen&#x27;s kappa</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L9 5L1 9z" fill="#6b6f7b"/></marker></defs>
+<rect width="880" height="380" fill="#ffffff"/>
+<text x="30" y="36" font-size="19" fill="#10151f" font-weight="bold" text-anchor="start">Cohen&#x27;s kappa: do two people agree more than by luck?</text>
+<text x="30" y="58" font-size="12.5" fill="#52514e" font-weight="normal" text-anchor="start">You and an expert (athletic trainer, nurse...) each label the 50 vignettes without seeing each other&#x27;s answers. EXAMPLE numbers:</text>
+<rect x="60" y="120" width="760" height="36" rx="4" fill="#f4f4f2" stroke="#d9dbe2" stroke-width="1"/>
+<rect x="60" y="120" width="228.0" height="36" rx="4" fill="#e4e4df" stroke="#9a9a94" stroke-width="1"/>
+<rect x="288.0" y="120" width="456.0" height="36" rx="0" fill="#e9f6ea" stroke="#2e8b57" stroke-width="1"/>
+<text x="174.0" y="143" font-size="12.5" fill="#52514e" font-weight="bold" text-anchor="middle">30% agree by luck</text>
+<text x="516.0" y="143" font-size="12.5" fill="#1d5a37" font-weight="bold" text-anchor="middle">agreement beyond luck</text>
+<text x="782.0" y="143" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">disagree</text>
+<text x="60.0" y="176" font-size="12" fill="#8b8f9b" font-weight="normal" text-anchor="middle">0%</text>
+<text x="288.0" y="176" font-size="12" fill="#8b8f9b" font-weight="normal" text-anchor="middle">30%</text>
+<text x="744.0" y="176" font-size="12" fill="#8b8f9b" font-weight="normal" text-anchor="middle">90%</text>
+<text x="820.0" y="176" font-size="12" fill="#8b8f9b" font-weight="normal" text-anchor="middle">100%</text>
+<text x="30" y="215" font-size="13" fill="#10151f" font-weight="normal" text-anchor="start">Observed agreement: you agree on 45 of 50 = 90%.</text>
+<text x="30" y="238" font-size="13" fill="#10151f" font-weight="normal" text-anchor="start">Chance agreement: two people guessing with the same label mix would still agree about 30% of the time.</text>
+<text x="30" y="270" font-size="15" fill="#1d5a37" font-weight="bold" text-anchor="start">kappa = (observed − chance) ÷ (1 − chance) = (0.90 − 0.30) ÷ 0.70 = 0.86</text>
+<text x="30" y="300" font-size="12.5" fill="#52514e" font-weight="normal" text-anchor="start">Guide: 0 = no better than luck · 0.61 to 0.80 = substantial · 0.81 to 1.00 = almost perfect</text>
+<text x="30" y="330" font-size="12.5" fill="#10151f" font-weight="normal" text-anchor="start">Why it matters: you wrote the vignettes AND the answers. An expert agreeing shows your answer key is not just your opinion.</text>
+<text x="30" y="352" font-size="12" fill="#52514e" font-weight="normal" text-anchor="start" font-style="italic">Run it:  py kappa_agreement.py --make-sheet   then   py kappa_agreement.py --rater rater_sheet.csv</text>
+</svg>

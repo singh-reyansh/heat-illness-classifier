@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="330" viewBox="0 0 860 330" font-family="Segoe UI, Arial, Helvetica, sans-serif">
+<title>Data sets</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L9 5L1 9z" fill="#6b6f7b"/></marker></defs>
+<rect width="860" height="330" fill="#ffffff"/>
+<text x="30" y="36" font-size="19" fill="#10151f" font-weight="bold" text-anchor="start">The data: practice cases vs. test cases</text>
+<text x="30" y="58" font-size="12.5" fill="#52514e" font-weight="normal" text-anchor="start">Like studying with practice problems, then taking a test you have never seen. Tuning on the test would be cheating.</text>
+<rect x="30" y="85" width="240" height="120" rx="10" fill="#f4f4f2" stroke="#9a9a94" stroke-width="1.5"/>
+<text x="150.0" y="122.0" font-size="14" fill="#3a3a37" font-weight="bold" text-anchor="middle">dev: 10 practice cases</text>
+<text x="150.0" y="141.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">V101 to V110</text>
+<text x="150.0" y="158.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">the ONLY place to try</text>
+<text x="150.0" y="175.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">new prompt wording</text>
+<rect x="310" y="85" width="240" height="120" rx="10" fill="#eaf2ff" stroke="#2a78d6" stroke-width="1.5"/>
+<text x="430.0" y="122.0" font-size="14" fill="#123f75" font-weight="bold" text-anchor="middle">test20: 20 cases</text>
+<text x="430.0" y="141.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">V001 to V020</text>
+<text x="430.0" y="158.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">the original locked test</text>
+<text x="430.0" y="175.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">never used for tuning</text>
+<rect x="590" y="85" width="240" height="120" rx="10" fill="#eaf2ff" stroke="#2a78d6" stroke-width="1.5"/>
+<text x="710.0" y="122.0" font-size="14" fill="#123f75" font-weight="bold" text-anchor="middle">extra30: 30 cases</text>
+<text x="710.0" y="141.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">V021 to V050</text>
+<text x="710.0" y="158.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">a second held-out test,</text>
+<text x="710.0" y="175.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">written later</text>
+<rect x="310" y="225" width="520" height="50" rx="10" fill="#eaf2ff" stroke="#2a78d6" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="570" y="247" font-size="14" fill="#123f75" font-weight="bold" text-anchor="middle">all50 = test20 + extra30</text>
+<text x="570" y="265" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">17 Heat Stroke, 16 Heat Exhaustion, 7 Uncertain, 10 Not Heat Illness</text>
+<text x="30" y="300" font-size="12" fill="#7a1515" font-weight="bold" text-anchor="start">Rule: lock the prompt wording BEFORE looking at any test score. Changing it after seeing the test results would make the score meaningless.</text>
+</svg>

@@ -1,0 +1,7 @@
+requests
+streamlit
+flask
+scikit-learn  # only needed for compare_with_sklearn.py
+matplotlib
+# only needed for check_parity.py (a developer check, not for running the project):
+# playwright

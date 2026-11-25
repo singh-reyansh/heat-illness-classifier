@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="470" viewBox="0 0 900 470" font-family="Segoe UI, Arial, Helvetica, sans-serif">
+<title>How the web app works</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L9 5L1 9z" fill="#6b6f7b"/></marker></defs>
+<rect width="900" height="470" fill="#ffffff"/>
+<text x="30" y="36" font-size="19" fill="#10151f" font-weight="bold" text-anchor="start">How the web app works: what happens when you click Classify</text>
+<rect x="30" y="80" width="190" height="90" rx="10" fill="#f3eeff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="125.0" y="102.0" font-size="14" fill="#43207f" font-weight="bold" text-anchor="middle">1. Web page</text>
+<text x="125.0" y="121.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">classifier_flask.html</text>
+<text x="125.0" y="138.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">sends the description</text>
+<text x="125.0" y="155.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">to the server</text>
+<rect x="270" y="80" width="190" height="90" rx="10" fill="#f3eeff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="365.0" y="102.0" font-size="14" fill="#43207f" font-weight="bold" text-anchor="middle">2. Flask server</text>
+<text x="365.0" y="121.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">server.py</text>
+<text x="365.0" y="138.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">POST /api/classify</text>
+<text x="365.0" y="155.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">has the secret key</text>
+<rect x="510" y="80" width="170" height="90" rx="10" fill="#fff0e6" stroke="#eb6834" stroke-width="1.5"/>
+<text x="595.0" y="102.0" font-size="14" fill="#7a2e10" font-weight="bold" text-anchor="middle">3. Classifier</text>
+<text x="595.0" y="121.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">full_classifier_groq.py</text>
+<text x="595.0" y="138.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">asks the 2 questions</text>
+<text x="595.0" y="155.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">then applies the rule</text>
+<rect x="730" y="80" width="140" height="90" rx="10" fill="#f4f4f2" stroke="#9a9a94" stroke-width="1.5"/>
+<text x="800.0" y="102.0" font-size="14" fill="#3a3a37" font-weight="bold" text-anchor="middle">4. Groq LLM</text>
+<text x="800.0" y="121.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">answers each</text>
+<text x="800.0" y="138.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">question with</text>
+<text x="800.0" y="155.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">1 or 0 + reason</text>
+<path d="M220 125 L267 125" fill="none" stroke="#6b6f7b" stroke-width="1.8" marker-end="url(#a)" marker-start="url(#a)"/>
+<path d="M460 125 L507 125" fill="none" stroke="#6b6f7b" stroke-width="1.8" marker-end="url(#a)" marker-start="url(#a)"/>
+<path d="M680 125 L727 125" fill="none" stroke="#6b6f7b" stroke-width="1.8" marker-end="url(#a)" marker-start="url(#a)"/>
+<text x="30" y="205" font-size="12.5" fill="#10151f" font-weight="normal" text-anchor="start">The answer travels back the same way. The page then shows the label, the reasons, the first-aid steps and the caveats.</text>
+<text x="30" y="225" font-size="12.5" fill="#1d5a37" font-weight="bold" text-anchor="start">The API key never reaches the browser, so nobody can copy it with View Source.</text>
+<rect x="30" y="255" width="400" height="100" rx="10" fill="#fff5dc" stroke="#c98a00" stroke-width="1.5"/>
+<text x="230.0" y="282.0" font-size="14" fill="#5c4000" font-weight="bold" text-anchor="middle">Demo mode (no internet)</text>
+<text x="230.0" y="301.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">The page replays REAL AI answers that were saved</text>
+<text x="230.0" y="318.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">earlier (saved_responses_all50.json), looked up by</text>
+<text x="230.0" y="335.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">the exact question. Works only for the 50 vignette cards.</text>
+<rect x="470" y="255" width="400" height="100" rx="10" fill="#e9f6ea" stroke="#2e8b57" stroke-width="1.5"/>
+<text x="670.0" y="282.0" font-size="14" fill="#1d5a37" font-weight="bold" text-anchor="middle">Chatbot (no internet, no key)</text>
+<text x="670.0" y="301.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">POST /api/chat  -&gt;  chatbot.py  -&gt;  naive_bayes.py</text>
+<text x="670.0" y="318.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">picks the topic, then fills in a pre-written answer</text>
+<text x="670.0" y="335.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">with this case&#x27;s details</text>
+<text x="30" y="395" font-size="12.5" fill="#10151f" font-weight="normal" text-anchor="start">Safety design: the AI never writes medical advice. It only answers yes/no. The label comes from a fixed rule, the first-aid steps</text>
+<text x="30" y="415" font-size="12.5" fill="#10151f" font-weight="normal" text-anchor="start">and chatbot answers are all pre-written, and keywords only choose WHICH pre-written steps to show.</text>
+</svg>

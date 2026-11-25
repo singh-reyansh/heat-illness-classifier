@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="Segoe UI, Arial, Helvetica, sans-serif">
+<title>Confusion matrix</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L9 5L1 9z" fill="#6b6f7b"/></marker></defs>
+<rect width="880" height="470" fill="#ffffff"/>
+<text x="30" y="36" font-size="19" fill="#10151f" font-weight="bold" text-anchor="start">Confusion matrix: where the right and wrong answers went</text>
+<text x="30" y="58" font-size="12.5" fill="#52514e" font-weight="normal" text-anchor="start">Your real AI results on all 50 vignettes. Rows = the true answer. Columns = what the classifier said.</text>
+<text x="390" y="90" font-size="13" fill="#52514e" font-weight="bold" text-anchor="middle">What the classifier said</text>
+<text x="247.5" y="104" font-size="12" fill="#52514e" font-weight="bold" text-anchor="middle">Heat Stroke</text>
+<text x="342.5" y="104" font-size="12" fill="#52514e" font-weight="bold" text-anchor="middle">Heat Exh.</text>
+<text x="437.5" y="104" font-size="12" fill="#52514e" font-weight="bold" text-anchor="middle">Uncertain</text>
+<text x="532.5" y="104" font-size="12" fill="#52514e" font-weight="bold" text-anchor="middle">Not Heat Ill.</text>
+<text x="30" y="231" font-size="13" fill="#52514e" font-weight="bold" text-anchor="start">True answer</text>
+<text x="190" y="144.0" font-size="12" fill="#52514e" font-weight="bold" text-anchor="end">Heat Stroke</text>
+<rect x="200" y="110" width="95" height="58" rx="0" fill="#e9f6ea" stroke="#2e8b57" stroke-width="1"/>
+<text x="247.5" y="146.0" font-size="20" fill="#1d5a37" font-weight="bold" text-anchor="middle">17</text>
+<rect x="295" y="110" width="95" height="58" rx="0" fill="#ffffff" stroke="#d9dbe2" stroke-width="1"/>
+<text x="342.5" y="146.0" font-size="20" fill="#8b8f9b" font-weight="bold" text-anchor="middle">0</text>
+<rect x="390" y="110" width="95" height="58" rx="0" fill="#ffffff" stroke="#d9dbe2" stroke-width="1"/>
+<text x="437.5" y="146.0" font-size="20" fill="#8b8f9b" font-weight="bold" text-anchor="middle">0</text>
+<rect x="485" y="110" width="95" height="58" rx="0" fill="#ffffff" stroke="#d9dbe2" stroke-width="1"/>
+<text x="532.5" y="146.0" font-size="20" fill="#8b8f9b" font-weight="bold" text-anchor="middle">0</text>
+<text x="190" y="202.0" font-size="12" fill="#52514e" font-weight="bold" text-anchor="end">Heat Exh.</text>
+<rect x="200" y="168" width="95" height="58" rx="0" fill="#ffffff" stroke="#d9dbe2" stroke-width="1"/>
+<text x="247.5" y="204.0" font-size="20" fill="#8b8f9b" font-weight="bold" text-anchor="middle">0</text>
+<rect x="295" y="168" width="95" height="58" rx="0" fill="#e9f6ea" stroke="#2e8b57" stroke-width="1"/>
+<text x="342.5" y="204.0" font-size="20" fill="#1d5a37" font-weight="bold" text-anchor="middle">16</text>
+<rect x="390" y="168" width="95" height="58" rx="0" fill="#ffffff" stroke="#d9dbe2" stroke-width="1"/>
+<text x="437.5" y="204.0" font-size="20" fill="#8b8f9b" font-weight="bold" text-anchor="middle">0</text>
+<rect x="485" y="168" width="95" height="58" rx="0" fill="#ffffff" stroke="#d9dbe2" stroke-width="1"/>
+<text x="532.5" y="204.0" font-size="20" fill="#8b8f9b" font-weight="bold" text-anchor="middle">0</text>
+<text x="190" y="260.0" font-size="12" fill="#52514e" font-weight="bold" text-anchor="end">Uncertain</text>
+<rect x="200" y="226" width="95" height="58" rx="0" fill="#ffffff" stroke="#d9dbe2" stroke-width="1"/>
+<text x="247.5" y="262.0" font-size="20" fill="#8b8f9b" font-weight="bold" text-anchor="middle">0</text>
+<rect x="295" y="226" width="95" height="58" rx="0" fill="#ffffff" stroke="#d9dbe2" stroke-width="1"/>
+<text x="342.5" y="262.0" font-size="20" fill="#8b8f9b" font-weight="bold" text-anchor="middle">0</text>
+<rect x="390" y="226" width="95" height="58" rx="0" fill="#e9f6ea" stroke="#2e8b57" stroke-width="1"/>
+<text x="437.5" y="262.0" font-size="20" fill="#1d5a37" font-weight="bold" text-anchor="middle">7</text>
+<rect x="485" y="226" width="95" height="58" rx="0" fill="#ffffff" stroke="#d9dbe2" stroke-width="1"/>
+<text x="532.5" y="262.0" font-size="20" fill="#8b8f9b" font-weight="bold" text-anchor="middle">0</text>
+<text x="190" y="318.0" font-size="12" fill="#52514e" font-weight="bold" text-anchor="end">Not Heat Ill.</text>
+<rect x="200" y="284" width="95" height="58" rx="0" fill="#fdeaea" stroke="#d03b3b" stroke-width="1"/>
+<text x="247.5" y="320.0" font-size="20" fill="#7a1515" font-weight="bold" text-anchor="middle">1</text>
+<rect x="295" y="284" width="95" height="58" rx="0" fill="#ffffff" stroke="#d9dbe2" stroke-width="1"/>
+<text x="342.5" y="320.0" font-size="20" fill="#8b8f9b" font-weight="bold" text-anchor="middle">0</text>
+<rect x="390" y="284" width="95" height="58" rx="0" fill="#ffffff" stroke="#d9dbe2" stroke-width="1"/>
+<text x="437.5" y="320.0" font-size="20" fill="#8b8f9b" font-weight="bold" text-anchor="middle">0</text>
+<rect x="485" y="284" width="95" height="58" rx="0" fill="#e9f6ea" stroke="#2e8b57" stroke-width="1"/>
+<text x="532.5" y="320.0" font-size="20" fill="#1d5a37" font-weight="bold" text-anchor="middle">9</text>
+<text x="30" y="420" font-size="12.5" fill="#10151f" font-weight="normal" text-anchor="start">Green diagonal = correct answers (49 of 50).</text>
+<text x="30" y="442" font-size="12.5" fill="#7a1515" font-weight="normal" text-anchor="start">Red = the one mistake: V008 (true answer: Not Heat Illness, the classifier said: Heat Stroke).</text>
+<rect x="610" y="100" width="245" height="110" rx="10" fill="#eaf2ff" stroke="#2a78d6" stroke-width="1.5"/>
+<text x="732.5" y="132.0" font-size="14" fill="#123f75" font-weight="bold" text-anchor="middle">Recall (read a ROW)</text>
+<text x="732.5" y="151.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">Of the 17 real Heat Stroke</text>
+<text x="732.5" y="168.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">cases, how many did it catch?</text>
+<text x="732.5" y="185.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">17 / 17 = 100%</text>
+<rect x="610" y="225" width="245" height="110" rx="10" fill="#f3eeff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="732.5" y="257.0" font-size="14" fill="#43207f" font-weight="bold" text-anchor="middle">Precision (read a COLUMN)</text>
+<text x="732.5" y="276.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">Of the 18 times it SAID Heat</text>
+<text x="732.5" y="293.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">Stroke, how many were right?</text>
+<text x="732.5" y="310.0" font-size="12" fill="#52514e" font-weight="normal" text-anchor="middle">17 / 18 = 94%</text>
+<text x="610" y="360" font-size="12" fill="#52514e" font-weight="bold" text-anchor="start">For heat stroke, recall matters most:</text>
+<text x="610" y="378" font-size="12" fill="#52514e" font-weight="normal" text-anchor="start">a missed heat stroke is dangerous, a</text>
+<text x="610" y="396" font-size="12" fill="#52514e" font-weight="normal" text-anchor="start">false alarm is only inconvenient.</text>
+</svg>
